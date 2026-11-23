@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Il sangue e la circolazione sanguigna</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+<style>body{margin:0;padding:12px}.dz{max-width:1180px;margin:0 auto}
+:root{
+  color-scheme:light;
+  --bg:#F6F8FC; --surface:#FFFFFF; --surface-2:#EEF2F8; --ink:#1F2A3A; --ink-2:#5B6778; --line:#E2E7EF;
+  --accent:#2457A6; --accent-ink:#FFFFFF; --accent-soft:#E6EEFB;
+  --mark:#FFF1B8; --mark-ink:#3A2E00;
+  --ok:#1F8A4C; --ok-soft:#E3F5EA; --ko:#C62F3A; --ko-soft:#FDE8EA;
+  --amber:#B86E00; --amber-soft:#FFF3DC;
+  --c1:#2457A6; --c1s:#EEF3FB; --c1b:#D3DFEF;
+  --c2:#1F8A4C; --c2s:#EDF7F1; --c2b:#CDE7D7;
+  --c3:#B5562E; --c3s:#FBF0EA; --c3b:#F0D6C8;
+  --c4:#7A4FA8; --c4s:#F4EFFA; --c4b:#E0D3EE;
+  --c5:#1D7F86; --c5s:#EAF5F6; --c5b:#C9E3E5;
+  --c6:#9A7414; --c6s:#FAF4E2; --c6b:#ECDDB0;
+  --display:"Nunito", "Segoe UI", system-ui, sans-serif;
+  --body:"Nunito", "Segoe UI", system-ui, sans-serif;
+  --r:14px;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.dz{--acc:#2457A6;--acc2:#E6EEFB;color:var(--ink)}
+.dz *{box-sizing:border-box}
+.dz h1,.dz h2,.dz h3{font-family:var(--display);line-height:1.2;margin:0}
+.dz mark{background:var(--mark);color:var(--mark-ink);padding:0 .15em;border-radius:3px}
+.dz .kw{font-weight:800;color:var(--acc)}
+.dz-text .w.now .kw,.dz-text .kw .w.now{color:#fff}
+.dz-gn{font-size:.8rem;font-weight:700;color:var(--ink-2);background:var(--surface-2);border-radius:99px;padding:1px 9px}
+.dz button{font:inherit;cursor:pointer}
+.dz button:focus-visible,.dz input:focus-visible,.dz select:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+/* intestazione */
+.dz-head{background:linear-gradient(135deg,#fff 0%,var(--acc2) 55%,#eaf1fc 100%);border:1px solid var(--line);border-bottom:0;border-radius:var(--r) var(--r) 0 0;padding:18px 20px 0}
+.dz-htop{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.dz-logo{font-size:40px;line-height:1}
+.dz-htext{flex:1;min-width:220px}
+.dz-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.dz-chip{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;font-weight:800;padding:2px 9px;border-radius:99px;background:#fff;color:var(--acc);border:1px solid var(--line)}
+.dz-head h1{font-size:clamp(1.5rem,4vw,1.85rem);font-weight:800;letter-spacing:-.3px}
+.dz-sub{color:var(--ink-2);margin:3px 0 0;max-width:70ch}
+.dz-tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.dz-pill{display:flex;align-items:center;gap:6px;font-size:.84rem;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px 10px 3px 5px;font-variant-numeric:tabular-nums}
+.dz-meter{width:40px;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.dz-meter i{display:block;height:100%;background:var(--acc);border-radius:99px;transition:width .3s}
+.dz-tabs{display:flex;flex-wrap:wrap;gap:4px 2px;margin-top:14px}
+.dz-tab{border:0;background:transparent;padding:10px 14px;border-radius:12px 12px 0 0;font-weight:700;color:var(--ink-2);white-space:nowrap;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:6px}
+.dz-tab:hover{color:var(--ink);background:#ffffff99}
+.dz-tab[aria-selected="true"]{color:var(--acc);background:#fff;border-bottom-color:var(--acc)}
+.dz-tab .n{font-size:.74rem;min-width:1.5em;padding:0 .4em;border-radius:99px;background:var(--surface-2);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.dz-tab[aria-selected="true"] .n{background:var(--acc2);color:var(--acc)}
+.dz-main{background:var(--bg);border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);padding:20px 18px 30px}
+.dz-panel{display:flex;flex-direction:column;gap:16px}
+/* schede */
+.dz-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:0 1px 2px #0000000a}
+.dz-card>h2,.dz-card .dz-ch{font-size:1.25rem;color:var(--acc);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.dz-blocks{columns:2 440px;column-gap:16px}
+.dz-blocks>.dz-card{break-inside:avoid;display:inline-block;width:100%;margin-bottom:16px}
+.dz-num{flex:none;font-weight:800;font-size:1rem;color:#fff;background:var(--acc);width:2rem;height:2rem;border-radius:50%;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+.dz-goals{background:var(--ok-soft);border-left:5px solid var(--ok);border-radius:12px;padding:12px 16px}
+.dz-goals h3{font-size:1.02rem;color:var(--ok);margin-bottom:4px}
+.dz-goals ul{margin:0;padding-left:1.2rem;display:grid;gap:2px}
+.dz-sec.done{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok-soft)}
+.dz-sec.speaking{border-color:var(--acc);box-shadow:0 0 0 4px var(--acc2)}
+.dz-sec .dz-text{margin:0}
+.dz-text .w{cursor:text;border-radius:3px;transition:background .15s}
+.dz-text .w:hover{background:var(--acc2)}
+.dz-text .w.cur{box-shadow:inset 3px 0 0 var(--acc);background:var(--acc2)}
+.dz-text .w.now{background:var(--acc);color:#fff}
+.dz-box{border-radius:10px;padding:10px 12px;margin:10px 0 0}
+.dz-box.ricorda{background:var(--ok-soft);border-left:5px solid var(--ok)}
+.dz-box.attenzione{background:var(--amber-soft);border-left:5px solid var(--amber)}
+.dz table{border-collapse:collapse;width:100%;margin:10px 0 0;font-size:.95rem}
+.dz th,.dz td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+.dz th{background:#f1f4f9}
+.dz-tblwrap{overflow-x:auto}
+.dz-hint{font-size:.82rem;color:var(--ink-2);margin:.5rem 0 0}
+.dz-sec-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dz-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:7px 13px;font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;gap:6px}
+.dz-btn:hover:not(:disabled){border-color:#b9c3d3}
+.dz-btn:disabled{opacity:.45;cursor:default}
+.dz-btn.on{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.dz-btn.pri,.dz-btn.play{background:var(--acc);border-color:var(--acc);color:#fff}
+.dz-btn.pri:hover,.dz-btn.play:hover{filter:brightness(1.08)}
+.dz-gal{margin-top:12px;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.dz-gal.one{grid-template-columns:minmax(0,1fr)}
+.dz-fig{margin:0;min-width:0}
+.dz-fig img{display:block;max-width:100%;max-height:320px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:zoom-in}
+.dz-gal:not(.one) .dz-fig img{width:100%;height:180px;object-fit:cover}
+.dz-fig figcaption{font-size:.85rem;color:var(--ink-2);margin-top:4px}
+.dz-links{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.dz-link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);background:var(--acc2);border:1px solid var(--line);border-radius:12px;padding:8px 13px;max-width:100%}
+.dz-link:hover,.dz-link:focus-visible{border-color:var(--acc);outline:none}
+.dz-link .ic{flex:none;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:700}
+.dz-link b{display:block;font-size:.98rem}
+.dz-link small{display:block;color:var(--ink-2);font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46ch}
+/* infografica */
+.dz-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.dz-ic{--k:var(--c1);--ks:var(--c1s);--kb:var(--c1b);background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px #0000000a}
+.dz-ic .ph{aspect-ratio:4/3;background:var(--ks);display:grid;place-items:center;overflow:hidden}
+.dz-ic .ph img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;display:block}
+.dz-ic .big{font-weight:800;font-size:clamp(1.9rem,6vw,2.6rem);color:var(--k);line-height:1;text-align:center;padding:.6rem}
+.dz-ic .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}
+.dz-ic .bd .val{font-weight:800;color:var(--k);font-size:1.25rem;line-height:1.1}
+.dz-ic h3{font-size:1.08rem;color:var(--k)}
+.dz-ic p{margin:0}
+.dz-ic .n{font-weight:800;color:#fff;background:var(--k);border-radius:99px;width:1.7rem;height:1.7rem;display:grid;place-items:center;font-size:.9rem;flex:none}
+.dz-ic .hd{display:flex;align-items:center;gap:8px}
+/* grafici dell'infografica */
+.dz-ic.wide{grid-column:span 2}
+.dz-ic .vz{background:var(--ks);padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:150px}
+.vz-icon{font-size:4rem;line-height:1}
+.vz-bars{width:100%;display:grid;gap:7px}
+.vz-bar{display:grid;grid-template-columns:minmax(70px,32%) 1fr auto;gap:8px;align-items:center;font-size:.9rem}
+.vz-bar .l{font-weight:700;overflow:hidden;text-overflow:ellipsis}
+.vz-bar .t{height:16px;background:#fff;border-radius:99px;overflow:hidden;border:1px solid var(--kb)}
+.vz-bar .t i{display:block;height:100%;border-radius:99px}
+.vz-bar .v{font-weight:800;color:var(--k);font-variant-numeric:tabular-nums;white-space:nowrap}
+.vz-pie{display:flex;align-items:center;gap:14px;width:100%;justify-content:center;flex-wrap:wrap}
+.vz-pie svg{width:120px;height:120px;flex:none}
+.vz-pie ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:.9rem}
+.vz-pie li{display:flex;align-items:center;gap:6px}
+.vz-pie li i{width:12px;height:12px;border-radius:3px;flex:none}
+.vz-pie b{color:var(--ink)}
+.vz-steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;width:100%}
+.vz-steps li{position:relative;display:flex;align-items:center;gap:7px;background:#fff;border:2px solid var(--kb);border-radius:12px;padding:6px 10px;font-size:.92rem;max-width:220px}
+.vz-steps li+li::before{content:"→";position:absolute;left:-18px;color:var(--k);font-weight:800}
+.vz-steps .n{flex:none;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--k);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.8rem}
+.vz-cyc{font-size:.85rem;font-weight:700;color:var(--k)}
+.vz-cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;width:100%;align-items:stretch}
+.vz-side{background:#fff;border:2px solid var(--kb);border-radius:12px;padding:8px 10px}
+.vz-side b{color:var(--k);display:block;margin-bottom:2px}
+.vz-side ul{margin:0;padding-left:1.1rem;font-size:.9rem}
+.vz-cmp .vs{align-self:center;font-weight:800;font-size:1.4rem;color:var(--k)}
+.vz-time{list-style:none;margin:0;padding:6px 0 0;display:flex;width:100%;border-top:3px solid var(--k);gap:6px}
+.vz-time li{flex:1;position:relative;padding-top:10px;font-size:.88rem;text-align:center;min-width:0}
+.vz-time li::before{content:"";position:absolute;top:-13px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;border:3px solid var(--k)}
+.vz-time b{display:block;color:var(--k)}
+/* glossario */
+.dz-search{width:100%;max-width:380px;padding:9px 12px;border:1px solid #c8d0dc;border-radius:10px;background:#fff;color:var(--ink);font:inherit}
+.dz-gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0 0}
+.dz-term{background:#fff;border:1px solid var(--line);border-left:5px solid var(--acc);border-radius:12px;padding:11px 14px}
+.dz-term dt{font-weight:800;font-size:1.08rem;color:var(--acc)}
+.dz-term dd{margin:3px 0 0}
+/* flashcard */
+.dz-card-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.dz-flash{width:100%;max-width:520px;min-height:240px;border:3px solid var(--acc);border-radius:18px;background:#fff;color:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5rem;gap:.6rem;box-shadow:6px 6px 0 var(--acc2)}
+.dz-flash.back{background:var(--acc2)}
+.dz-flash small{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:800}
+.dz-flash strong{font-size:clamp(1.25rem,3.5vw,1.7rem);line-height:1.25}
+.dz-flash span{font-size:1.12rem}
+.dz-card-nav{display:flex;align-items:center;gap:1rem;font-variant-numeric:tabular-nums}
+/* quiz uno alla volta */
+.dz-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.dz-row label{font-weight:700}
+.dz-row select{font:inherit;padding:7px;border-radius:9px;border:1px solid #c8d0dc;background:#fff}
+.dz-qmeta{display:flex;justify-content:space-between;color:var(--ink-2);font-weight:700;font-size:.9rem}
+.dz-qbar{height:10px;background:#e9edf3;border-radius:6px;overflow:hidden;margin:8px 0 14px}
+.dz-qbar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),color-mix(in srgb,var(--acc) 55%,#fff));transition:width .3s}
+.dz-qq{font-size:1.25rem;font-weight:800}
+.dz-qopts{display:grid;gap:9px;margin:12px 0}
+.dz-qopt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;color:var(--ink);display:flex;gap:10px;align-items:flex-start}
+.dz-qopt b{color:var(--acc);background:var(--acc2);border-radius:6px;min-width:1.6em;text-align:center;flex:none}
+.dz-qopt:hover:not(:disabled){border-color:#9fb0c8;background:#f8fafd}
+.dz-qopt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.dz-qopt.ko{border-color:var(--ko);background:#ffe1e1}
+.dz-qopt:disabled{cursor:default}
+.dz-exp{border-radius:10px;padding:10px 12px;margin-top:6px}
+.dz-exp.ok{background:var(--ok-soft)}.dz-exp.ko{background:#ffe9e9}
+.dz-score{font-size:2.8rem;font-weight:800;color:var(--acc);margin:4px 0;line-height:1.1}
+.dz-wrong{margin:10px 0 0;padding-left:1.2rem;display:grid;gap:6px}
+.dz-wrong small{display:block;color:var(--ink-2)}
+.dz-empty{color:var(--ink-2);font-style:italic}
+.dz-next{display:flex;justify-content:flex-end}
+.dz-qi{padding:16px 20px 20px}
+.dz-qi .qz{max-width:none}
+.dz.big{font-size:19px}
+/* barra audio */
+.dz-audio{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:6;margin-top:10px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);color:var(--ink);border:2px solid var(--acc2);border-radius:14px;padding:9px 12px;box-shadow:0 8px 24px rgba(35,38,58,.12)}
+.dz-audio .lbl{flex:1 1 160px;font-weight:700;font-size:.92rem;min-width:0}
+.dz-audio .lbl small{display:block;font-weight:400;color:var(--ink-2)}
+.dz-audio button{border:0;border-radius:9px;padding:7px 12px;font-weight:700;font-size:.92rem;background:var(--surface-2);color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+.dz-audio button.main{background:var(--acc);color:#fff}
+.dz-bars{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
+.dz-bars i{width:3px;background:var(--acc);border-radius:2px;animation:dzb .9s ease-in-out infinite}
+.dz-bars i:nth-child(2){animation-delay:.2s}.dz-bars i:nth-child(3){animation-delay:.4s}
+.dz-bars.paused i{animation:none;height:4px}
+@keyframes dzb{0%,100%{height:4px}50%{height:14px}}
+.dz-lb{position:fixed;inset:0;z-index:30;background:rgba(20,22,40,.82);display:grid;place-items:center;padding:16px;cursor:zoom-out}
+.dz-lb img{max-width:100%;max-height:90vh;border-radius:12px;background:#fff}
+@media (max-width:700px){.dz-ic.wide{grid-column:auto}.vz-cmp{grid-template-columns:1fr}.vz-cmp .vs{display:none}.vz-time{flex-direction:column;border-top:0;border-left:3px solid var(--k);padding:0 0 0 18px;gap:8px}.vz-time li{text-align:left;padding-top:0}.vz-time li::before{top:3px;left:-27px;margin-left:0}}
+@media (max-width:620px){.dz-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.dz-head{padding:14px 12px 0}.dz-main{padding:14px 10px 24px}.dz-card{padding:14px}.dz-blocks{columns:1}.dz-qq{font-size:1.1rem}.dz-logo{font-size:32px}}
+@media (prefers-reduced-motion:reduce){.dz *{transition:none!important}.dz-bars i{animation:none;height:10px}}
+@media print{.dz-tabs,.dz-tools,.dz-sec-actions,.dz-audio,.dz-hint{display:none!important}}
+
+.dg h2{margin:0 0 4px;font-size:1.25rem;color:var(--acc,#c62f3a);font-family:var(--display)}
+.dg .dg-intro{margin:0;color:var(--ink-2)}
+.dg .dtools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+.dg-btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 13px;border-radius:10px;font:inherit;font-weight:700;cursor:pointer;font-size:.95rem}
+.dg-btn:hover{border-color:#b9c3d3}
+.dg-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dg-btn.pri{background:var(--acc,#c62f3a);border-color:var(--acc,#c62f3a);color:#fff}
+.dg-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.dg .dwrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+.dg .stage{position:relative;width:100%;container-type:inline-size}
+.dg .stage svg{display:block;width:100%;height:auto}
+.dg .lab{position:absolute;transform:translateY(-50%);display:flex;align-items:center;gap:5px;background:#fff;border:2px solid #9aa6b8;border-radius:8px;padding:2px 7px 2px 3px;font-size:clamp(10px,1.45cqw,14px);font-weight:700;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 1px 3px #0001;transition:border-color .15s,background .15s;line-height:1.35}
+.dg .lab.l{flex-direction:row-reverse;padding:2px 3px 2px 7px}
+.dg .lab .n{flex:none;background:var(--ink);color:#fff;border-radius:6px;min-width:1.6em;text-align:center;font-size:.9em;padding:0 3px}
+.dg .lab .t{overflow:hidden;text-overflow:ellipsis}
+.dg .lab.sel{border-color:var(--acc,#c62f3a);background:var(--acc2,#fde8ea)}
+.dg .lab.ok{border-color:var(--ok);background:var(--ok-soft)}
+.dg .lab.ko{border-color:var(--ko);background:#ffe1e1}
+.dg .lab.empty .t{color:#9aa6b8;font-weight:600}
+.dg .leader{stroke:#5b6778;stroke-width:1.6}
+.dg .leader.sel{stroke:var(--acc,#c62f3a);stroke-width:2.6}
+.dg .dot{fill:#fff;stroke:#1f2a3a;stroke-width:2}
+.dg .dot.sel{fill:var(--acc,#c62f3a)}
+.dg .side .item{display:flex;gap:8px;align-items:flex-start;padding:7px 8px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+.dg .side .item:hover{background:#f3f6fa}
+.dg .side .item.sel{background:var(--acc2,#fde8ea);border-color:var(--acc,#f3b9bf)}
+.dg .side .item .n{flex:none;background:var(--ink);color:#fff;border-radius:6px;min-width:26px;text-align:center;font-weight:800;font-size:14px}
+.dg .side .item .nm{font-weight:800}
+.dg .side .item .ds{font-size:14px;color:var(--ink-2);display:none}
+.dg .side .item.sel .ds{display:block}
+.dg .side select{width:100%;font:inherit;padding:5px;border-radius:8px;border:1px solid #c8d0dc;background:#fff}
+.dg .side .item.ok select{border-color:var(--ok);background:var(--ok-soft)}
+.dg .side .item.ko select{border-color:var(--ko);background:#ffe1e1}
+.dg .result{font-weight:800;margin:8px 0}
+.dg .info{background:#f7f9fd;border:1px dashed #c7d1e0;border-radius:10px;padding:10px 12px;margin-top:10px;min-height:56px}
+@keyframes dg-beat{0%,100%{transform:scale(1)}12%{transform:scale(1.045)}25%{transform:scale(.97)}38%{transform:scale(1.02)}}
+.dg .beating .heartbody{animation:dg-beat .85s infinite;transform-box:fill-box;transform-origin:50% 60%}
+@keyframes dg-flow{to{stroke-dashoffset:-40}}
+.dg .flowing .flow,.dg .breathing .flow{stroke-dasharray:4 16;animation:dg-flow 1s linear infinite}
+.dg .stage:not(.flowing):not(.breathing) .flow{opacity:0}
+@keyframes dg-peri{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.25)}}
+.dg .eating .peri{animation:dg-peri 1.1s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes dg-lungs{0%,100%{transform:scale(1)}45%{transform:scale(1.055)}}
+@keyframes dg-diaf{0%,100%{transform:translateY(0)}45%{transform:translateY(14px)}}
+.dg .breathing .lungs{animation:dg-lungs 4.2s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 40%}
+.dg .breathing .diaf{animation:dg-diaf 4.2s ease-in-out infinite}
+@media (max-width:900px){.dg .dwrap{grid-template-columns:1fr}}
+@media (max-width:620px){.dg .lab .t{display:none}.dg .lab,.dg .lab.l{padding:2px 3px}}
+@media (prefers-reduced-motion:reduce){.dg .stage *{animation:none!important}}
+</style><link rel="apple-touch-icon" href="../icon.png"><link rel="icon" href="../icon.png"></head>
+<body><a href="../" style="display:inline-block;margin:10px 12px 0;font:700 15px Nunito,system-ui,sans-serif;color:#2457A6;text-decoration:none">← Tutte le schede</a><div id="app"></div>
+<script>
+window.Diagrams = (function(){
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const BLUE='#4f7fd1',BLUED='#2a56a3',RED='#e0525b',REDD='#b2303a',MYO='#d98a7e',MYOD='#a8584d';
+  const L = (id, name, desc) => ({ id, name, desc });
+
+  const LIB = {
+  /* ================= SISTEMA CIRCOLATORIO ================= */
+  heart:{ group:'Sistema circolatorio', title:'Il cuore in sezione', intro:'Il cuore visto di fronte e aperto. Blu = sangue povero di ossigeno, rosso = sangue ricco di ossigeno.',
+    keys:'cuore atri ventricoli valvole aorta vene cave miocardio setto', anim:['beating','▶ Fai battere il cuore','⏸ Ferma il battito'],
+    W:800,H:600,L:205,R:625,
+    pts:{svc:[335,105,70,'l'],pa:[292,146,150,'l'],ra:[338,250,232,'l'],tric:[350,301,300,'l'],pv:[395,296,362,'l'],rv:[362,395,425,'l'],ivc:[270,515,520,'l'],aorta:[515,82,45,'r'],la:[512,240,150,'r'],pveins:[592,262,240,'r'],mitral:[498,292,305,'r'],av:[452,300,365,'r'],septum:[428,410,430,'r'],lv:[495,400,500,'r']},
+    labels:[L('svc','Vena cava superiore',"Porta all'atrio destro il sangue povero di ossigeno che arriva dalla testa e dalle braccia."),L('pa','Arteria polmonare','Esce dal ventricolo destro e porta il sangue povero di ossigeno ai polmoni. Si divide in due rami, uno per polmone.'),L('ra','Atrio destro','Cavità superiore destra: riceve dalle vene cave il sangue povero di ossigeno.'),L('tric','Valvola tricuspide',"Valvola a tre lembi tra atrio destro e ventricolo destro: impedisce al sangue di tornare nell'atrio."),L('pv','Valvola polmonare',"Valvola semilunare all'uscita del ventricolo destro: impedisce al sangue di tornare dall'arteria polmonare al ventricolo."),L('rv','Ventricolo destro',"Cavità inferiore destra: spinge il sangue povero di ossigeno nell'arteria polmonare, verso i polmoni."),L('ivc','Vena cava inferiore',"Porta all'atrio destro il sangue povero di ossigeno che arriva dal tronco e dalle gambe."),L('aorta','Aorta',"L'arteria più grande del corpo: esce dal ventricolo sinistro e porta il sangue ricco di ossigeno a tutto il corpo. Forma un arco da cui partono le arterie per la testa e le braccia."),L('la','Atrio sinistro','Cavità superiore sinistra: riceve dalle vene polmonari il sangue ricco di ossigeno.'),L('pveins','Vene polmonari',"Sono quattro e portano all'atrio sinistro il sangue ricco di ossigeno che arriva dai polmoni."),L('mitral','Valvola mitrale (bicuspide)','Valvola a due lembi tra atrio sinistro e ventricolo sinistro.'),L('av','Valvola aortica',"Valvola semilunare all'uscita del ventricolo sinistro: impedisce al sangue di tornare dall'aorta al ventricolo."),L('septum','Setto','Parete muscolare che divide il cuore destro dal cuore sinistro: così il sangue ricco e quello povero di ossigeno non si mescolano.'),L('lv','Ventricolo sinistro',"Cavità inferiore sinistra, con la parete più spessa: spinge il sangue ricco di ossigeno nell'aorta, verso tutto il corpo.")],
+    svg:()=>`
+<defs><linearGradient id="dg-gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e7a296"/><stop offset="1" stop-color="${MYO}"/></linearGradient></defs>
+<path d="M300,285 L250,565" stroke="${BLUE}" stroke-width="40" fill="none"/>
+<path d="M585,140 L585,240" stroke="${RED}" stroke-width="38" fill="none"/>
+<path d="M395,185 C420,150 520,142 600,150" stroke="${BLUED}" stroke-width="30" fill="none"/>
+<g class="heartbody">
+<path d="M298,212 C262,265 276,385 338,452 C378,498 418,528 440,545 C474,522 545,470 572,398 C600,322 594,240 562,206 C520,178 340,180 298,212 Z" fill="url(#dg-gm)" stroke="${MYOD}" stroke-width="3"/>
+<ellipse cx="340" cy="252" rx="44" ry="46" fill="${BLUE}" opacity=".9"/>
+<ellipse cx="510" cy="245" rx="42" ry="38" fill="${RED}" opacity=".9"/>
+<path d="M316,322 C316,306 334,305 400,307 L414,307 L414,468 C380,448 330,402 316,322 Z" fill="${BLUE}" opacity=".9"/>
+<path d="M442,307 L536,303 C556,322 552,392 518,440 C494,474 466,496 446,503 Z" fill="${RED}" opacity=".9"/>
+<path d="M326,300 l18,14 M374,300 l-18,14" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<path d="M480,290 l16,14 M520,290 l-16,14" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</g>
+<rect x="315" y="72" width="42" height="150" rx="6" fill="${BLUE}"/>
+<path d="M452,310 L452,150 C452,78 568,64 586,145" stroke="${RED}" stroke-width="40" fill="none"/>
+<path d="M478,108 l-6,-52 M512,92 l0,-54 M548,96 l10,-50" stroke="${RED}" stroke-width="13" stroke-linecap="round"/>
+<path d="M395,310 L395,182 C380,152 300,140 222,146" stroke="${BLUED}" stroke-width="32" fill="none"/>
+<path d="M540,232 L612,222 M542,268 L612,278" stroke="${REDD}" stroke-width="16" stroke-linecap="round"/>
+<path d="M382,300 l13,-12 l13,12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M439,302 l13,-12 l13,12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+<g fill="#fff" opacity=".85"><path d="M336,140 l-8,-14 h16z"/><path d="M395,240 l-8,10 h16z"/><path d="M452,240 l-8,10 h16z"/></g>`},
+
+  circ:{ group:'Sistema circolatorio', title:'La doppia circolazione', intro:'Il percorso del sangue nella piccola e nella grande circolazione. Le frecce indicano la direzione.',
+    keys:'circolazione piccola grande polmonare sistemica doppia', anim:['flowing','▶ Mostra il flusso','⏸ Ferma il flusso'],
+    W:800,H:600,L:165,R:640,
+    pts:{cap:[332,96,55,'l'],small:[400,191,118,'l'],pa:[228,215,185,'l'],right:[300,330,300,'l'],vc:[180,430,430,'l'],big:[400,484,525,'l'],lungs:[470,72,50,'r'],pveins:[574,190,170,'r'],left:[500,330,300,'r'],aorta:[613,440,420,'r'],body:[440,535,545,'r']},
+    labels:[L('cap','Capillari polmonari','Avvolgono gli alveoli dei polmoni: qui il sangue cede anidride carbonica e riceve ossigeno.'),L('small','Piccola circolazione',"Circuito breve: dal ventricolo destro ai polmoni e ritorno all'atrio sinistro. Serve a ossigenare il sangue."),L('pa','Arteria polmonare','Porta il sangue povero di ossigeno dal ventricolo destro ai polmoni.'),L('right','Cuore destro','Atrio e ventricolo destro: contengono sangue povero di ossigeno.'),L('vc','Vene cave',"Riportano all'atrio destro il sangue povero di ossigeno che arriva da tutto il corpo."),L('big','Grande circolazione',"Circuito lungo: dal ventricolo sinistro a tutti gli organi e ritorno all'atrio destro. Porta ossigeno e nutrienti alle cellule."),L('lungs','Polmoni','Organi della respirazione: il sangue vi arriva povero di ossigeno e ne esce ricco di ossigeno.'),L('pveins','Vene polmonari',"Riportano il sangue ricco di ossigeno dai polmoni all'atrio sinistro."),L('left','Cuore sinistro','Atrio e ventricolo sinistro: contengono sangue ricco di ossigeno.'),L('aorta','Aorta','Porta il sangue ricco di ossigeno dal ventricolo sinistro a tutto il corpo.'),L('body','Capillari degli organi','Nei tessuti di tutto il corpo il sangue cede ossigeno e nutrienti e raccoglie anidride carbonica e scorie.')],
+    svg:()=>`
+<defs><linearGradient id="dg-lg" x1="0" x2="1"><stop offset="0" stop-color="${BLUE}"/><stop offset="1" stop-color="${RED}"/></linearGradient><linearGradient id="dg-bg2" x1="0" x2="1"><stop offset="0" stop-color="${BLUE}"/><stop offset="1" stop-color="${RED}"/></linearGradient></defs>
+<path d="M300,288 L190,288 C180,288 180,300 180,310 L180,520 C180,535 190,536 250,536" stroke="${BLUE}" stroke-width="18" fill="none"/>
+<path d="M300,288 L190,288 C180,288 180,300 180,310 L180,520 C180,535 190,536 250,536" class="flow" stroke="#fff" stroke-width="4" fill="none" style="animation-direction:reverse"/>
+<path d="M300,368 C226,368 222,260 222,180 C222,110 240,92 276,92" stroke="${BLUE}" stroke-width="18" fill="none"/>
+<path d="M300,368 C226,368 222,260 222,180 C222,110 240,92 276,92" class="flow" stroke="#fff" stroke-width="4" fill="none"/>
+<path d="M524,92 C566,92 578,120 578,180 C578,260 570,288 500,288" stroke="${RED}" stroke-width="18" fill="none"/>
+<path d="M524,92 C566,92 578,120 578,180 C578,260 570,288 500,288" class="flow" stroke="#fff" stroke-width="4" fill="none"/>
+<path d="M500,368 C600,368 618,380 618,450 C618,530 600,536 550,536" stroke="${RED}" stroke-width="18" fill="none"/>
+<path d="M500,368 C600,368 618,380 618,450 C618,530 600,536 550,536" class="flow" stroke="#fff" stroke-width="4" fill="none"/>
+<ellipse cx="330" cy="96" rx="62" ry="58" fill="#f6c0c4" stroke="#d48b92" stroke-width="3"/>
+<ellipse cx="470" cy="96" rx="62" ry="58" fill="#f6c0c4" stroke="#d48b92" stroke-width="3"/>
+<path d="M392,40 L408,40 L408,70 L392,70 Z" fill="#cfd6e0"/>
+<g stroke="url(#dg-lg)" stroke-width="3" fill="none"><path d="M285,80 q15,-18 30,0 t30,0 t30,0"/><path d="M285,100 q15,-18 30,0 t30,0 t30,0"/><path d="M285,120 q15,-18 30,0 t30,0 t30,0"/><path d="M425,80 q15,-18 30,0 t30,0 t30,0"/><path d="M425,100 q15,-18 30,0 t30,0 t30,0"/><path d="M425,120 q15,-18 30,0 t30,0 t30,0"/></g>
+<g class="heartbody"><rect x="296" y="248" width="208" height="166" rx="26" fill="${MYO}" stroke="${MYOD}" stroke-width="3"/>
+<rect x="306" y="258" width="88" height="62" rx="10" fill="${BLUE}"/><rect x="406" y="258" width="88" height="62" rx="10" fill="${RED}"/>
+<rect x="306" y="328" width="88" height="76" rx="10" fill="${BLUE}"/><rect x="406" y="328" width="88" height="76" rx="10" fill="${RED}"/>
+<g font-size="20" font-weight="800" fill="#fff" text-anchor="middle" font-family="Nunito,Arial,sans-serif"><text x="350" y="296">AD</text><text x="450" y="296">AS</text><text x="350" y="372">VD</text><text x="450" y="372">VS</text></g></g>
+<rect x="250" y="500" width="300" height="72" rx="18" fill="#f3e6d6" stroke="#c9ab86" stroke-width="3"/>
+<g stroke="url(#dg-bg2)" stroke-width="3" fill="none" transform="translate(800,0) scale(-1,1)"><path d="M270,520 q15,-14 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/><path d="M270,540 q15,-14 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/><path d="M270,560 q15,-14 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/></g>
+<path d="M400,165 m-55,0 a55,26 0 1,0 110,0 a55,26 0 1,0 -110,0" fill="none" stroke="#9aa6b8" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M400,462 m-70,0 a70,22 0 1,0 140,0 a70,22 0 1,0 -140,0" fill="none" stroke="#9aa6b8" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M222,150 l-7,12 h14z" fill="${BLUED}"/><path d="M578,226 l-7,-12 h14z" fill="${REDD}"/><path d="M618,474 l-7,-12 h14z" fill="${REDD}"/><path d="M180,370 l-7,12 h14z" fill="${BLUED}"/>`},
+
+  vessels:{ group:'Sistema circolatorio', title:'Arterie, vene e capillari', intro:'In alto i vasi tagliati in sezione, in basso il passaggio dalle arteriole alle venule attraverso i capillari.',
+    keys:'vasi sanguigni arterie vene capillari arteriole venule', anim:null, always:'flowing',
+    W:900,H:520,L:205,R:715,
+    pts:{artery:[238,108,62,'l'],muscle:[280,103,128,'l'],lumen:[280,150,195,'l'],arteriole:[250,370,330,'l'],capnet:[440,385,420,'l'],vein:[492,112,62,'r'],capillary:[628,150,150,'r'],venule:[600,370,330,'r'],valve:[652,372,420,'r']},
+    labels:[L('artery','Arteria','Vaso che porta il sangue dal cuore agli organi. In sezione è rotonda, con parete spessa.'),L('muscle','Parete spessa ed elastica',"Lo strato muscolare ed elastico delle arterie resiste all'alta pressione del sangue spinto dal cuore."),L('lumen','Lume',"Lo spazio interno del vaso, in cui scorre il sangue."),L('arteriole','Arteriola','Piccola arteria che porta il sangue ai capillari.'),L('capnet','Rete di capillari','Vasi sottilissimi tra arteriole e venule: qui avvengono gli scambi tra sangue e cellule.'),L('vein','Vena','Vaso che riporta il sangue al cuore. Ha parete sottile e il lume spesso schiacciato.'),L('capillary','Capillare','In sezione: parete formata da un solo strato di cellule; i globuli rossi passano uno alla volta.'),L('venule','Venula','Piccola vena che raccoglie il sangue dai capillari.'),L('valve','Valvola a nido di rondine','Valvola delle vene: lascia passare il sangue solo verso il cuore e ne impedisce il ritorno.')],
+    svg:()=>`
+<circle cx="280" cy="150" r="60" fill="#f2c9bb" stroke="#c98f7d" stroke-width="2"/>
+<circle cx="280" cy="150" r="52" fill="#df7a6e"/>
+<g stroke="#c45d52" stroke-width="2" fill="none"><circle cx="280" cy="150" r="46"/><circle cx="280" cy="150" r="40"/></g>
+<circle cx="280" cy="150" r="31" fill="#f6d6cc"/>
+<circle cx="280" cy="150" r="27" fill="${RED}"/>
+<ellipse cx="450" cy="152" rx="58" ry="46" fill="#e8c6c8" stroke="#b9939a" stroke-width="2"/>
+<ellipse cx="450" cy="152" rx="52" ry="40" fill="#c77d86"/>
+<ellipse cx="450" cy="153" rx="45" ry="32" fill="#7a68b5"/>
+<circle cx="620" cy="150" r="18" fill="#f3c2c6" stroke="#c98f7d" stroke-width="3"/>
+<circle cx="620" cy="150" r="13" fill="#f8e1e3"/>
+<ellipse cx="620" cy="150" rx="9" ry="7" fill="${RED}"/>
+<g font-family="Nunito,Arial,sans-serif" font-size="14" fill="#5b6778" text-anchor="middle" font-weight="700"><text x="280" y="236">sezione A</text><text x="450" y="226">sezione B</text><text x="620" y="196">sezione C</text></g>
+<path d="M200,370 L285,370" stroke="${RED}" stroke-width="28" stroke-linecap="round"/>
+<path d="M210,370 L280,370" stroke="#fff" stroke-width="4" class="flow"/>
+<defs><linearGradient id="dg-cg" x1="285" x2="560" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${RED}"/><stop offset="1" stop-color="${BLUE}"/></linearGradient></defs>
+<g stroke-width="5" fill="none" stroke-linecap="round">
+<path d="M285,370 C330,320 380,330 420,345 S500,330 560,370" stroke="url(#dg-cg)"/>
+<path d="M285,370 C330,352 380,352 420,362 S500,354 560,370" stroke="url(#dg-cg)"/>
+<path d="M285,370 C330,388 380,380 420,388 S500,392 560,370" stroke="url(#dg-cg)"/>
+<path d="M285,370 C330,420 380,412 420,405 S500,418 560,370" stroke="url(#dg-cg)"/>
+<path d="M360,335 C370,360 370,390 360,410" stroke="url(#dg-cg)"/><path d="M480,338 C470,360 470,392 480,410" stroke="url(#dg-cg)"/></g>
+<path d="M560,370 L705,370" stroke="${BLUE}" stroke-width="32" stroke-linecap="round"/>
+<g stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"><path d="M640,356 L656,368 M640,384 L656,372"/><path d="M682,356 L698,368 M682,384 L698,372"/></g>
+<path d="M570,370 L630,370" stroke="#fff" stroke-width="3" class="flow"/>
+<g font-family="Nunito,Arial,sans-serif" font-size="14" fill="#5b6778" font-weight="700"><text x="200" y="470">sangue ricco di O₂</text><text x="560" y="470">sangue povero di O₂</text></g>
+<defs><marker id="dg-ar2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#9aa6b8"/></marker></defs>
+<path d="M330,465 h180" stroke="#9aa6b8" stroke-width="2" marker-end="url(#dg-ar2)"/>`},
+
+  blood:{ group:'Sistema circolatorio', title:'Il sangue', intro:'A sinistra il sangue separato in una provetta, a destra le sue cellule viste al microscopio.',
+    keys:'sangue plasma globuli rossi bianchi piastrine eritrociti leucociti', anim:null,
+    W:950,H:520,L:200,R:790,
+    pts:{plasma:[300,180,120,'l'],buffy:[300,306,290,'l'],rbcs:[300,385,420,'l'],rbc:[582,150,110,'r'],wbc:[684,250,250,'r'],plt:[706,350,390,'r']},
+    labels:[L('plasma','Plasma (55%)','Parte liquida, giallo chiaro, formata soprattutto da acqua, con sali, proteine, nutrienti, ormoni e scorie disciolti.'),L('buffy','Globuli bianchi e piastrine',"Sottile strato biancastro tra plasma e globuli rossi: meno dell'1% del sangue."),L('rbcs','Globuli rossi (45%)','Sono le cellule più pesanti e si depositano sul fondo della provetta.'),L('rbc','Eritrocita (globulo rosso)',"Disco biconcavo senza nucleo, ricco di emoglobina: trasporta l'ossigeno."),L('wbc','Leucocita (globulo bianco)',"Cellula più grande, con nucleo: difende l'organismo dai microbi."),L('plt','Trombocita (piastrina)','Piccolo frammento di cellula: serve alla coagulazione del sangue.')],
+    svg:()=>`
+<defs><clipPath id="dg-tube"><path d="M268,70 L332,70 L332,420 A32,32 0 0 1 268,420 Z"/></clipPath>
+<clipPath id="dg-lens"><circle cx="600" cy="260" r="165"/></clipPath>
+<radialGradient id="dg-rbcg"><stop offset="0" stop-color="#f08a8f"/><stop offset=".55" stop-color="#d63c47"/><stop offset="1" stop-color="#b8242f"/></radialGradient></defs>
+<g clip-path="url(#dg-tube)"><rect x="260" y="60" width="80" height="240" fill="#f7d978"/><rect x="260" y="300" width="80" height="12" fill="#f4f1ea"/><rect x="260" y="312" width="80" height="150" fill="#a8202b"/></g>
+<path d="M268,50 L268,420 A32,32 0 0 0 332,420 L332,50" fill="none" stroke="#7d8898" stroke-width="4"/>
+<path d="M258,50 h84" stroke="#7d8898" stroke-width="5" stroke-linecap="round"/>
+<g font-family="Nunito,Arial,sans-serif" font-size="14" fill="#5b6778" text-anchor="middle" font-weight="700"><text x="300" y="485">provetta</text><text x="600" y="455">al microscopio</text></g>
+<circle cx="600" cy="260" r="165" fill="#fdf2e0" stroke="#7d8898" stroke-width="6"/>
+<g clip-path="url(#dg-lens)">
+${[[520,180],[582,150],[650,175],[560,250],[700,300],[530,330],[615,345],[480,260],[640,420],[560,410],[720,200],[760,250],[470,360],[690,110],[500,120]].map(([x,y],i)=>`<g transform="rotate(${i*37} ${x} ${y})"><ellipse cx="${x}" cy="${y}" rx="26" ry="23" fill="url(#dg-rbcg)"/><ellipse cx="${x}" cy="${y}" rx="10" ry="8" fill="#e9737a" opacity=".85"/></g>`).join('')}
+<circle cx="650" cy="250" r="34" fill="#e7def3" stroke="#9c8cc0" stroke-width="2"/>
+<path d="M630,250 c0,-14 14,-18 20,-8 c6,-10 22,-6 20,8 c8,6 2,20 -10,16 c-6,8 -20,6 -22,-4 c-10,0 -12,-8 -8,-12z" fill="#6d4fa6"/>
+<g fill="#b48ac9" stroke="#8f62a8" stroke-width="1"><path d="M690,345 l8,-5 l7,4 l-2,8 l-9,2z"/><path d="M706,358 l6,-6 l7,3 l0,7 l-8,3z"/><path d="M540,205 l7,-4 l7,4 l-3,7 l-8,0z"/><path d="M600,300 l6,-5 l7,4 l-3,7 l-7,0z"/><path d="M455,300 l7,-4 l6,5 l-3,6 l-8,-1z"/></g>
+</g>`},
+
+  /* ================= APPARATO DIGERENTE ================= */
+  digest:{ group:'Apparato digerente', title:"L'apparato digerente", intro:'Il tubo digerente dalla bocca all’ano, con le ghiandole che versano i loro succhi. Con l’animazione segui il percorso del cibo.',
+    keys:'digestione digerente stomaco intestino fegato pancreas esofago bocca bolo chimo villi', anim:['eating','▶ Segui il percorso del cibo','⏸ Ferma il percorso'],
+    W:800,H:660,L:205,R:600,
+    pts:{bocca:[400,105,92,'l'],saliv:[449,113,96,'r'],esofago:[405,200,188,'l'],stomaco:[497,300,262,'r'],fegato:[300,288,262,'l'],cistifellea:[353,334,336,'l'],pancreas:[505,382,372,'r'],duodeno:[391,396,406,'l'],tenue:[402,505,520,'r'],crasso:[504,500,452,'r'],appendice:[286,600,600,'l'],retto:[403,606,592,'r'],ano:[402,628,640,'r']},
+    labels:[L('bocca','Bocca','Qui inizia la digestione: i denti masticano il cibo e la lingua lo mescola con la saliva, formando il bolo.'),L('saliv','Ghiandole salivari',"Producono la saliva, che ammorbidisce il cibo e contiene un enzima (amilasi o ptialina) che comincia a digerire l'amido."),L('esofago','Esofago','Tubo muscolare lungo circa 25 cm: con movimenti a onda (peristalsi) spinge il bolo dalla faringe allo stomaco.'),L('stomaco','Stomaco','Sacca muscolare che rimescola il cibo con il succo gastrico, molto acido: il bolo diventa una poltiglia chiamata chimo.'),L('fegato','Fegato','La ghiandola più grande del corpo: produce la bile, che aiuta a digerire i grassi, e immagazzina sostanze utili.'),L('cistifellea','Cistifellea','Piccola sacca sotto il fegato che raccoglie la bile e la versa nel duodeno quando serve.'),L('pancreas','Pancreas','Ghiandola che versa nel duodeno il succo pancreatico, con enzimi che digeriscono zuccheri, proteine e grassi.'),L('duodeno','Duodeno',"Primo tratto dell'intestino tenue: qui arrivano la bile e il succo pancreatico e il chimo diventa chilo."),L('tenue','Intestino tenue','Tubo lungo circa 6–7 metri, ripiegato su sé stesso: con i villi intestinali assorbe le sostanze nutritive e le passa al sangue.'),L('crasso','Intestino crasso','Più corto e più largo del tenue (circa 1,5 m): assorbe acqua e sali minerali e forma le feci.'),L('appendice','Appendice',"Piccolo prolungamento a forma di dito all'inizio dell'intestino crasso."),L('retto','Retto',"Ultimo tratto dell'intestino crasso: raccoglie le feci prima che vengano espulse."),L('ano','Ano','Apertura finale del tubo digerente, chiusa da un muscolo (sfintere): da qui escono le feci.')],
+    svg:o=>{
+      const tube = (d, w, c1, c2, extra) => `<path d="${d}" stroke="${c2}" stroke-width="${w + 5}" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" stroke="${c1}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round" ${extra || ''}/>`;
+      const SMALL = 'M460,410 C482,420 492,452 478,468 C430,460 340,464 331,478 C320,494 470,490 470,505 C470,520 335,515 333,530 C331,545 470,540 468,553 C466,566 360,568 302,566';
+      const LARGE = 'M300,572 L298,462 C298,447 310,440 325,440 L478,440 C493,440 503,447 503,462 L504,548 C504,572 470,580 445,580 C425,580 410,588 404,600';
+      const PATH = 'M400,106 L405,200 L410,258 C445,258 505,280 507,318 C507,350 470,366 440,356 C412,360 392,372 390,392 C388,412 402,424 425,424 C440,424 452,418 460,410 ' + SMALL.slice(SMALL.indexOf('C482')) + ' L300,566 L298,462 C298,447 310,440 325,440 L478,440 C493,440 503,447 503,462 L504,548 C504,572 470,580 445,580 C425,580 410,588 404,600 L402,628';
+      return `
+<path d="M268,182 C300,166 350,162 400,162 C450,162 500,166 532,182 C560,196 566,240 560,300 C552,380 548,470 556,560 C560,610 520,646 400,648 C280,646 240,610 244,560 C252,470 248,380 240,300 C234,240 240,196 268,182 Z" fill="#fbf1ea" stroke="#efd9c8" stroke-width="2"/>
+<rect x="374" y="126" width="52" height="44" fill="#fbf1ea"/>
+<circle cx="400" cy="80" r="56" fill="#fbf1ea" stroke="#efd9c8" stroke-width="2"/>
+<ellipse cx="352" cy="114" rx="12" ry="9" fill="#f2b8a0" stroke="#c98a72" stroke-width="2"/>
+<ellipse cx="449" cy="114" rx="12" ry="9" fill="#f2b8a0" stroke="#c98a72" stroke-width="2"/>
+<ellipse cx="400" cy="105" rx="17" ry="7" fill="#d9727a" stroke="#b5535b" stroke-width="2"/>
+<g class="peri">${tube('M400,112 C400,140 402,170 405,200 L410,258', 12, '#f0b9b4', '#c97874')}</g>
+<path d="M262,262 C300,236 380,232 452,250 C458,262 440,280 418,292 C392,306 360,320 330,330 C296,338 272,326 262,305 C256,290 256,274 262,262 Z" fill="#a7493f" stroke="#7a2f28" stroke-width="3"/>
+<path d="M330,252 C350,270 360,292 352,318" stroke="#7a2f28" stroke-width="2" fill="none" opacity=".6"/>
+<ellipse cx="355" cy="332" rx="13" ry="20" transform="rotate(-25 355 332)" fill="#6fae5c" stroke="#4b7f3c" stroke-width="2"/>
+<path d="M372,384 C400,372 455,370 512,366 C530,365 536,376 524,382 C495,392 445,398 405,400 C383,401 368,394 372,384 Z" fill="#f3d18b" stroke="#c9a35a" stroke-width="2"/>
+<path d="M408,255 C420,250 448,248 470,258 C505,272 520,305 510,335 C500,365 465,378 440,368 C428,362 425,350 436,342 C455,330 470,315 462,295 C455,280 430,282 412,272 Z" fill="#f0a6a0" stroke="#c06a66" stroke-width="3"/>
+<path d="M470,275 C488,292 494,318 486,340 M455,300 C470,318 470,338 456,352" stroke="#c06a66" stroke-width="2" fill="none" opacity=".55"/>
+${tube('M436,356 C412,360 392,372 390,392 C388,412 402,424 425,424 C440,424 452,418 460,410', 13, '#eeb0a0', '#c98272')}
+${tube(SMALL, 15, '#f4c2b4', '#cc8a7c')}
+${tube('M302,575 C300,590 292,598 282,600', 7, '#d9a184', '#9c6448')}
+${tube(LARGE, 28, '#d7a07e', '#9c6448')}
+<path d="${LARGE}" stroke="#e8bc9c" stroke-width="20" fill="none" stroke-dasharray="13 5" stroke-linejoin="round"/>
+${tube('M404,598 L402,622', 22, '#c98b6a', '#8a5238')}
+<ellipse cx="402" cy="629" rx="9" ry="4" fill="#8a5238"/>
+${o && o.anim ? `<circle r="8" fill="#7a4a2a" stroke="#fff" stroke-width="2"><animateMotion dur="11s" repeatCount="indefinite" path="${PATH}"/></circle>` : ''}`;
+    }},
+
+  /* ================= APPARATO RESPIRATORIO ================= */
+  resp:{ group:'Apparato respiratorio', title:"L'apparato respiratorio", intro:'Le vie respiratorie e i polmoni visti di fronte; in basso, ingrandito, uno scambio di gas negli alveoli. Con l’animazione guarda come respiriamo.',
+    keys:'respirazione respiratorio polmoni trachea bronchi alveoli diaframma laringe inspirazione espirazione', anim:['breathing','▶ Fai respirare','⏸ Ferma il respiro'],
+    W:800,H:640,L:190,R:610,
+    pts:{naso:[400,78,66,'l'],faringe:[400,128,128,'l'],laringe:[412,168,160,'r'],trachea:[400,240,222,'l'],bronchi:[446,326,330,'r'],psx:[515,300,262,'r'],pdx:[290,300,300,'l'],bronchioli:[318,392,390,'l'],diaframma:[522,478,470,'r'],alveoli:[410,560,560,'r'],capal:[362,598,604,'l']},
+    labels:[L('naso','Cavità nasale',"L'aria entra dal naso: qui viene filtrata dai peli e dal muco, riscaldata e inumidita."),L('faringe','Faringe',"Canale in comune tra apparato respiratorio e digerente: l'aria va verso la laringe, il cibo verso l'esofago."),L('laringe','Laringe',"Contiene le corde vocali, che vibrando producono la voce. L'epiglottide la chiude quando deglutiamo."),L('trachea','Trachea','Tubo lungo circa 12 cm, rinforzato da anelli di cartilagine che lo tengono sempre aperto.'),L('bronchi','Bronchi','La trachea si divide in due bronchi, uno per ogni polmone.'),L('psx','Polmone sinistro',"Diviso in due lobi: è un po' più piccolo, perché lascia spazio al cuore."),L('pdx','Polmone destro','Diviso in tre lobi. Nel disegno, visto di fronte, appare a sinistra di chi guarda.'),L('bronchioli','Bronchioli',"Ramificazioni sempre più sottili dei bronchi, che portano l'aria fino agli alveoli."),L('diaframma','Diaframma',"Muscolo a cupola sotto i polmoni: quando si contrae e si abbassa l'aria entra (inspirazione), quando si rilassa l'aria esce (espirazione)."),L('alveoli','Alveoli polmonari','Minuscoli sacchetti in fondo ai bronchioli, circa 300 milioni: qui avviene lo scambio dei gas.'),L('capal','Capillari degli alveoli',"Vasi sottilissimi che avvolgono gli alveoli: il sangue riceve ossigeno e cede anidride carbonica.")],
+    svg:()=>`
+<circle cx="400" cy="90" r="62" fill="#fbf1ea" stroke="#efd9c8" stroke-width="2"/>
+<path d="M372,66 C385,54 415,54 428,66 L424,92 C410,99 390,99 376,92 Z" fill="#f7c9c4" stroke="#d08f8a" stroke-width="2"/>
+<path d="M380,74 q20,8 40,0 M382,84 q18,7 36,0" stroke="#d08f8a" stroke-width="1.5" fill="none"/>
+<path d="M400,96 L400,152" stroke="#c98a85" stroke-width="24" stroke-linecap="round"/>
+<path d="M400,96 L400,152" stroke="#f3b6b0" stroke-width="19" stroke-linecap="round"/>
+<path d="M400,100 L400,300" class="flow" stroke="#fff" stroke-width="3" fill="none" opacity=".9"/>
+<g class="lungs">
+<path d="M374,212 C340,204 282,250 264,330 C250,395 254,450 272,470 C302,478 346,470 372,460 C381,400 386,300 374,212 Z" fill="#f4a9b0" stroke="#c96b76" stroke-width="3"/>
+<path d="M426,212 C460,204 518,250 536,330 C550,395 546,450 528,470 C500,478 472,474 452,466 C457,440 447,420 432,410 C434,350 436,280 426,212 Z" fill="#f4a9b0" stroke="#c96b76" stroke-width="3"/>
+<path d="M276,330 C310,322 340,330 372,312 M284,410 C318,396 344,402 374,384" stroke="#c96b76" stroke-width="2" fill="none" opacity=".7"/>
+<path d="M432,320 C470,330 505,346 534,372" stroke="#c96b76" stroke-width="2" fill="none" opacity=".7"/>
+<g stroke="#d9a76a" fill="none" stroke-linecap="round"><path d="M352,340 C335,360 322,380 318,392 M345,346 C330,350 312,346 298,340 M318,392 C306,402 296,418 292,432 M318,392 C322,410 330,424 340,436 M298,340 C290,330 284,316 282,300" stroke-width="3"/>
+<path d="M448,340 C466,362 478,384 482,398 M455,346 C470,350 488,346 502,340 M482,398 C494,410 502,424 506,436 M482,398 C478,414 470,428 462,438 M502,340 C510,330 516,316 518,300" stroke-width="3"/></g>
+</g>
+<rect x="388" y="150" width="24" height="34" rx="8" fill="#e9c27a" stroke="#b98d3e" stroke-width="2"/>
+<rect x="387" y="184" width="26" height="118" rx="6" fill="#f1d9a6" stroke="#c9a35a" stroke-width="2"/>
+<g stroke="#c9a35a" stroke-width="3">${[196,208,220,232,244,256,268,280,292].map(y => `<path d="M389,${y} h22"/>`).join('')}</g>
+<path d="M400,300 C390,320 362,332 340,346 M400,300 C410,320 438,332 460,346" stroke="#b98d3e" stroke-width="19" fill="none" stroke-linecap="round"/>
+<path d="M400,300 C390,320 362,332 340,346 M400,300 C410,320 438,332 460,346" stroke="#e8c98a" stroke-width="14" fill="none" stroke-linecap="round"/>
+<g class="diaf"><path d="M236,488 C300,450 360,470 400,476 C440,470 500,450 564,488 L564,502 C500,466 440,486 400,492 C360,486 300,466 236,502 Z" fill="#d98a7e" stroke="#a8584d" stroke-width="2"/></g>
+<path d="M318,392 L360,528" stroke="#9aa6b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<circle cx="400" cy="572" r="56" fill="#fff" stroke="#9aa6b8" stroke-width="3"/>
+<g stroke="#c96b76" stroke-width="2" fill="#f8c7cc">${[[384,552],[412,548],[432,568],[420,592],[392,596],[372,576],[400,572]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="15"/>`).join('')}</g>
+<path d="M352,560 C372,540 420,530 446,556 C452,580 430,612 396,614 C370,612 350,594 352,560" stroke="${RED}" stroke-width="3" fill="none"/>
+<path d="M356,584 C380,606 424,604 444,580" stroke="${BLUE}" stroke-width="3" fill="none"/>
+<g font-family="Nunito,Arial,sans-serif" font-size="12" font-weight="800"><text x="452" y="540" fill="${REDD}">O₂ →</text><text x="330" y="626" fill="${BLUED}">← CO₂</text></g>`}
+  };
+
+  function catalog(){
+    return Object.entries(LIB).map(([id, d]) => `- "${id}": ${d.title} (${d.group}; parti: ${d.labels.map(l => l.name).join(', ')})`).join('\n');
+  }
+  function list(){ return Object.entries(LIB).map(([id, d]) => ({ id, title: d.title, group: d.group })); }
+  function has(id){ return !!LIB[id]; }
+
+  /* ---------- un disegno interattivo ---------- */
+  function mount(root, id){
+    const d = LIB[id]; if (!d) { root.innerHTML = ''; return; }
+    const st = { mode: 'explore', sel: null, answers: {}, checked: false, anim: false };
+    function render(){
+      const labs = d.labels, order = labs.map((l, i) => Object.assign({}, l, { i }));
+      let lines = '', boxes = '';
+      order.forEach((l, k) => {
+        const p = d.pts[l.id]; if (!p) return; const [x, y, by, side] = p; const bx = side === 'l' ? d.L : d.R; const isSel = st.sel === l.id;
+        lines += `<line class="leader${isSel ? ' sel' : ''}" x1="${x}" y1="${y}" x2="${bx}" y2="${by}"/><circle class="dot${isSel ? ' sel' : ''}" cx="${x}" cy="${y}" r="5"/>`;
+        let txt = l.name, cls = '';
+        if (st.mode === 'test') { const a = st.answers[l.id]; const f = a && labs.find(z => z.id === a); txt = f ? f.name : '……'; if (!a) cls = ' empty'; if (st.checked) cls += (a === l.id ? ' ok' : ' ko'); }
+        const pos = side === 'l' ? `right:${((d.W - bx) / d.W * 100).toFixed(2)}%;max-width:${(bx / d.W * 100 - 0.5).toFixed(2)}%` : `left:${(bx / d.W * 100).toFixed(2)}%;max-width:${(100 - bx / d.W * 100 - 0.5).toFixed(2)}%`;
+        boxes += `<div class="lab ${side}${isSel ? ' sel' : ''}${cls}" style="${pos};top:${(by / d.H * 100).toFixed(2)}%" data-lab="${l.id}" title="${esc(st.mode === 'test' ? 'Casella ' + (k + 1) : l.name)}"><span class="n">${k + 1}</span><span class="t">${esc(txt)}</span></div>`;
+      });
+      let side = '';
+      if (st.mode === 'explore') {
+        side = order.map((l, k) => `<div class="item${st.sel === l.id ? ' sel' : ''}" data-lab="${l.id}" role="button" tabindex="0"><span class="n">${k + 1}</span><div style="flex:1"><div class="nm">${esc(l.name)}</div><div class="ds">${esc(l.desc)}</div></div></div>`).join('');
+      } else {
+        const names = labs.slice().sort((a, b) => a.name.localeCompare(b.name, 'it'));
+        side = order.map((l, k) => { const s = st.checked ? (st.answers[l.id] === l.id ? ' ok' : ' ko') : ''; return `<div class="item${s}" style="cursor:default;align-items:center"><span class="n">${k + 1}</span><select data-ans="${l.id}" aria-label="Casella ${k + 1}"><option value="">— scegli —</option>${names.map(n => `<option value="${n.id}"${st.answers[l.id] === n.id ? ' selected' : ''}>${esc(n.name)}</option>`).join('')}</select></div>`; }).join('');
+        let res = '';
+        if (st.checked) { const ok = order.filter(l => st.answers[l.id] === l.id).length; res = `<div class="result">Risultato: ${ok} / ${order.length} ${ok === order.length ? '🎉 Perfetto!' : ok >= order.length * .6 ? '👍 Bene!' : '💪 Ripassa e riprova!'}</div>`; }
+        side += `${res}<div class="dg-row"><button class="dg-btn pri" data-act="check">Controlla</button><button class="dg-btn" data-act="reset">Ricomincia</button><button class="dg-btn" data-act="solve">Mostra soluzioni</button></div>`;
+      }
+      const selL = labs.find(l => l.id === st.sel);
+      const info = st.mode === 'explore' ? `<div class="info">${selL ? `<b>${esc(selL.name)}</b><br>${esc(selL.desc)}` : '👆 Clicca su una casella del disegno o su un nome dell’elenco per leggere la spiegazione.'}</div>` : '';
+      const animBtn = d.anim ? `<button class="dg-btn${st.anim ? ' on' : ''}" data-act="anim">${st.anim ? d.anim[2] : d.anim[1]}</button>` : '';
+      const stCls = [d.always || '', d.anim && st.anim ? d.anim[0] : ''].join(' ');
+      root.innerHTML = `<div class="dg"><h2>${esc(d.title)}</h2><p class="dg-intro">${esc(d.intro)}</p>
+        <div class="dtools"><button class="dg-btn${st.mode === 'explore' ? ' on' : ''}" data-act="explore">🔍 Esplora</button><button class="dg-btn${st.mode === 'test' ? ' on' : ''}" data-act="test">✍️ Mettiti alla prova</button>${animBtn}</div>
+        <div class="dwrap"><div><div class="stage ${stCls}"><svg viewBox="0 0 ${d.W} ${d.H}" role="img" aria-label="${esc(d.title)}">${d.svg({ anim: st.anim })}${lines}</svg>${boxes}</div>${info}</div>
+        <div class="side">${st.mode === 'test' ? '<p style="margin:0 0 6px;font-weight:700">Scegli il nome giusto per ogni numero:</p>' : ''}${side}</div></div></div>`;
+    }
+    root.onclick = e => {
+      const lab = e.target.closest('[data-lab]');
+      if (lab && !e.target.closest('select')) {
+        if (st.mode === 'explore') { st.sel = st.sel === lab.dataset.lab ? null : lab.dataset.lab; render(); }
+        else { const s = root.querySelector(`select[data-ans="${lab.dataset.lab}"]`); if (s) s.focus(); }
+        return;
+      }
+      const a = e.target.closest('[data-act]'); if (!a) return;
+      const act = a.dataset.act;
+      if (act === 'explore' || act === 'test') { st.mode = act; st.checked = false; }
+      else if (act === 'anim') st.anim = !st.anim;
+      else if (act === 'check') st.checked = true;
+      else if (act === 'reset') { st.answers = {}; st.checked = false; }
+      else if (act === 'solve') { d.labels.forEach(l => st.answers[l.id] = l.id); st.checked = true; }
+      render();
+    };
+    root.onkeydown = e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.item[data-lab]')) { e.preventDefault(); e.target.click(); } };
+    root.onchange = e => { const s = e.target.closest('select[data-ans]'); if (!s) return; st.answers[s.dataset.ans] = s.value; st.checked = false; render(); };
+    render();
+  }
+  return { LIB, catalog, list, has, mount };
+})();
+
+window.DashRender = (function(){
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong class="kw">$1</strong>').replace(/\n/g, '<br>');
+  const plain = s => String(s ?? '').replace(/\*\*/g, '');
+  const synth = typeof window.speechSynthesis !== 'undefined' && typeof SpeechSynthesisUtterance !== 'undefined' ? window.speechSynthesis : null;
+  const LETT = ['A','B','C','D','E','F'];
+  const COL = ['c1','c2','c3','c4','c5','c6'];
+  const shuffle = a => a.map(v => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(v => v[1]);
+
+  /* colore e simbolo secondo la materia */
+  const THEMES = [
+    [/scien|biolog|natur|corpo|chimic|fisic/i, '#C62F3A', '#FDE8EA', '🔬'],
+    [/geograf/i, '#1F8A4C', '#E3F5EA', '🌍'],
+    [/stori/i, '#B86E00', '#FFF3DC', '🏛️'],
+    [/matem|geometr|aritm/i, '#6A4BC4', '#EFEAFC', '📐'],
+    [/italian|tedesc|frances|ingles|lingu|letter/i, '#2457A6', '#E6EEFB', '💬'],
+    [/music|arte|disegno/i, '#B5408A', '#FBE8F3', '🎨']
+  ];
+  function theme(subject){ const t = THEMES.find(x => x[0].test(subject || '')); return t ? { acc: t[1], acc2: t[2], emoji: t[3] } : { acc: '#1D7F86', acc2: '#E0F3F4', emoji: '📘' }; }
+
+  /* testo della sezione diviso in parole cliccabili; data-o = posizione nel testo semplice */
+  function wordsHtml(body){
+    let out = '', off = 0;
+    String(body ?? '').split(/(\*\*.+?\*\*)/).forEach(seg => {
+      if (!seg) return;
+      const marked = /^\*\*.+\*\*$/.test(seg);
+      const txt = marked ? seg.slice(2, -2) : seg;
+      let h = '';
+      txt.split(/(\s+)/).forEach(tok => {
+        if (!tok) return;
+        if (/^\s+$/.test(tok)) h += tok.includes('\n') ? '<br>'.repeat(Math.min(2, (tok.match(/\n/g)||[]).length)) : ' ';
+        else h += `<span class="w" data-o="${off}">${esc(tok)}</span>`;
+        off += tok.length;
+      });
+      out += marked ? `<strong class="kw">${h}</strong>` : h;
+    });
+    return out;
+  }
+  function sentences(text, from){
+    const parts = []; const re = /[^.!?;:\n]+[.!?;:]*\s*/g; let m;
+    while ((m = re.exec(text))) { if (m.index + m[0].length <= from) continue; const s = Math.max(m.index, from); const t = text.slice(s, m.index + m[0].length); if (t.trim()) parts.push({ t, o: s }); }
+    return parts;
+  }
+
+  /* ---------- grafici dell'infografica ---------- */
+  const PAL = ['#2457A6', '#1F8A4C', '#B86E00', '#7A4FA8', '#C62F3A', '#1D7F86', '#9A7414'];
+  const num = v => { const n = parseFloat(String(v).replace(/'/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+  const fmt = n => (Math.round(n * 100) / 100).toLocaleString('it-CH');
+  function visualHTML(v){
+    if (!v || !v.type) return '';
+    if (v.type === 'icon') return `<span class="vz-icon" aria-hidden="true">${esc(v.emoji || '⭐')}</span>`;
+    if (v.type === 'bars') {
+      const d = (v.data || []).slice(0, 8), max = Math.max(...d.map(x => num(x.value)), 0) || 1;
+      return `<div class="vz-bars" role="img" aria-label="${esc(d.map(x => x.label + ' ' + x.value + (v.unit ? ' ' + v.unit : '')).join(', '))}">${d.map((x, i) => `<div class="vz-bar"><span class="l">${esc(x.label)}</span><span class="t"><i style="width:${Math.max(3, num(x.value) / max * 100).toFixed(1)}%;background:${PAL[i % PAL.length]}"></i></span><span class="v">${esc(fmt(num(x.value)))}${v.unit ? ' ' + esc(v.unit) : ''}</span></div>`).join('')}</div>`;
+    }
+    if (v.type === 'pie') {
+      const d = (v.data || []).slice(0, 6), tot = d.reduce((a, x) => a + num(x.value), 0) || 1;
+      let a0 = -Math.PI / 2, arcs = '';
+      d.forEach((x, i) => {
+        const f = num(x.value) / tot, a1 = a0 + f * Math.PI * 2, big = f > .5 ? 1 : 0, r = 42, ri = 24;
+        const P = (a, rr) => (60 + rr * Math.cos(a)).toFixed(2) + ',' + (60 + rr * Math.sin(a)).toFixed(2);
+        arcs += f >= .999 ? `<circle cx="60" cy="60" r="${(r + ri) / 2}" fill="none" stroke="${PAL[i % PAL.length]}" stroke-width="${r - ri}"/>`
+          : `<path d="M${P(a0, r)} A${r},${r} 0 ${big} 1 ${P(a1, r)} L${P(a1, ri)} A${ri},${ri} 0 ${big} 0 ${P(a0, ri)} Z" fill="${PAL[i % PAL.length]}"/>`;
+        a0 = a1;
+      });
+      return `<div class="vz-pie"><svg viewBox="0 0 120 120" role="img" aria-label="${esc(d.map(x => x.label + ' ' + x.value).join(', '))}">${arcs}</svg><ul>${d.map((x, i) => `<li><i style="background:${PAL[i % PAL.length]}"></i><b>${esc(fmt(num(x.value)))}${v.unit ? ' ' + esc(v.unit) : (Math.abs(tot - 100) < 1 ? '%' : '')}</b> ${esc(x.label)}</li>`).join('')}</ul></div>`;
+    }
+    if (v.type === 'steps') {
+      const st = (v.steps || []).slice(0, 7);
+      return `<ol class="vz-steps ${v.cycle ? 'cycle' : ''}">${st.map((x, i) => `<li><span class="n">${i + 1}</span><span>${rich(x)}</span></li>`).join('')}</ol>${v.cycle ? '<div class="vz-cyc">↻ e poi si ricomincia</div>' : ''}`;
+    }
+    if (v.type === 'compare') {
+      const side = x => `<div class="vz-side"><b>${esc((x && x.title) || '')}</b><ul>${((x && x.points) || []).slice(0, 5).map(p => `<li>${rich(p)}</li>`).join('')}</ul></div>`;
+      return `<div class="vz-cmp">${side(v.left)}<span class="vs" aria-hidden="true">≠</span>${side(v.right)}</div>`;
+    }
+    if (v.type === 'timeline') {
+      const ev = (v.events || []).slice(0, 7);
+      return `<ol class="vz-time">${ev.map(x => `<li><b>${esc(x.date)}</b><span>${rich(x.label)}</span></li>`).join('')}</ol>`;
+    }
+    return '';
+  }
+  const WIDE = { bars: 1, steps: 1, compare: 1, timeline: 1 };
+
+  function mount(root, data, opts){
+    opts = opts || {};
+    const IM = opts.images || {};
+    const img = k => (k && IM[k]) ? IM[k] : '';
+    const info = data.infographic || { title:'', items:[] };
+    const TH = theme(data.subject);
+    const diagrams = (data.diagrams || []).filter(id => window.Diagrams && Diagrams.has(id));
+    const maps = window.MindMap ? (data.maps || []).filter(m => m && m.root) : [];
+    const iqs = window.QuizRender ? (data.quizzes || []).filter(q => q && (q.questions || []).length) : [];
+    const st = { tab: opts.tab || 'leggi', read:{}, card:0, flip:false, q:'', big:false, cur:{}, sel:null, audio:null, rate:1,
+                 run: { quiz: null, vf: null }, best: { quiz: null, vf: null }, nq: { quiz: 0, vf: 0 } };
+    const uniq = (list, base) => { const seen = {}; return list.map((x, i) => { let t = list.length > 1 ? (x.title || base + ' ' + (i + 1)) : base; if (seen[t]) t += ' ' + (i + 1); seen[t] = 1; return t; }); };
+    const mapNames = uniq(maps, 'Mappa'), iqNames = uniq(iqs, 'Quiz interattivo');
+    const tabs = [
+      ['leggi', '📖 Leggi', (data.sections||[]).length],
+      ['disegni', '🔬 Disegni', diagrams.length],
+      ['info', '📊 Infografica', (info.items||[]).length],
+      ...maps.map((m, i) => ['map' + i, '🧠 ' + mapNames[i], -1]),
+      ['glossario', '📚 Glossario', (data.glossary||[]).length],
+      ['flashcard', '🃏 Flashcard', (data.flashcards||[]).length],
+      ['quiz', '🎯 Quiz', (data.quiz||[]).length],
+      ['vf', '✅ Vero o falso', (data.truefalse||[]).length],
+      ...iqs.map((q, i) => ['iq' + i, '🧩 ' + iqNames[i], q.questions.filter(x => x.type !== 'map_learn').length])
+    ].filter(t => t[2] !== 0);
+    if (!tabs.find(t => t[0] === st.tab) && tabs.length) st.tab = tabs[0][0];
+
+    /* ---------- Audio ---------- */
+    let voice = null;
+    function pickVoice(){ if (!synth) return; const v = synth.getVoices(); voice = v.find(x => /^it[-_]CH/i.test(x.lang)) || v.find(x => /^it/i.test(x.lang)) || null; }
+    if (synth){ pickVoice(); try { synth.addEventListener('voiceschanged', pickVoice); } catch(_){} }
+    function stopAudio(silent){ if (synth) synth.cancel(); st.audio = null; if (!silent) { paintAudio(); paintWords(); } }
+    function speakSection(i, from, only){
+      if (!synth) return;
+      synth.cancel();
+      const s = data.sections[i]; const text = plain(s.body);
+      let parts;
+      if (only) parts = [{ t: only.text, o: only.o }];
+      else parts = sentences(text, from || 0);
+      if (!from && !only) parts.unshift({ t: plain(s.title) + '. ', o: -1 });
+      const token = {}; st.audio = { sec: i, paused: false, pos: from || 0, token, label: only ? 'la parte selezionata' : (from ? 'da «' + (text.slice(from).split(/\s/)[0] || '') + '»' : 'dall’inizio') };
+      parts.forEach((p, k) => {
+        const u = new SpeechSynthesisUtterance(p.t);
+        u.lang = voice ? voice.lang : 'it-IT'; if (voice) u.voice = voice; u.rate = st.rate;
+        u.onstart = () => { if (st.audio && st.audio.token === token && p.o >= 0) { st.audio.pos = p.o; paintWords(); } };
+        u.onboundary = e => { if (st.audio && st.audio.token === token && p.o >= 0 && e.name !== 'sentence') { st.audio.pos = p.o + e.charIndex; paintWords(); } };
+        if (k === parts.length - 1) u.onend = () => { if (st.audio && st.audio.token === token) { st.audio = null; paintAudio(); paintWords(); } };
+        u.onerror = e => { if (e.error !== 'interrupted' && e.error !== 'canceled' && st.audio && st.audio.token === token) { st.audio = null; paintAudio(); paintWords(); } };
+        synth.speak(u);
+      });
+      paintAudio(); paintWords();
+    }
+    function togglePause(){ if (!st.audio || !synth) return; if (st.audio.paused) { synth.resume(); st.audio.paused = false; } else { synth.pause(); st.audio.paused = true; } paintAudio(); paintSecButtons(); }
+    function setRate(){ st.rate = st.rate === 1 ? 0.75 : 1; if (st.audio) { const a = st.audio; speakSection(a.sec, Math.max(0, a.pos)); } else paintAudio(); }
+    function paintAudio(){
+      const bar = root.querySelector('.dz-audio'); if (!bar) return;
+      const a = st.audio;
+      if (!a) { bar.hidden = true; paintSecButtons(); return; }
+      const s = data.sections[a.sec];
+      bar.hidden = false;
+      bar.innerHTML = `<span class="dz-bars ${a.paused?'paused':''}" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="lbl">${a.paused?'In pausa':'Sto leggendo'}: ${esc(s.title)}<small>${esc(a.label)}</small></span>
+        <button class="main" data-apause>${a.paused?'▶ Riprendi':'❚❚ Pausa'}</button>
+        <button data-astop>■ Stop</button>
+        <button data-arate title="Cambia velocità">${st.rate===1?'Velocità normale':'Velocità lenta'}</button>`;
+      paintSecButtons();
+    }
+    function paintSecButtons(){
+      root.querySelectorAll('.dz-sec').forEach(el => {
+        const i = +el.dataset.sec, a = st.audio, b = el.querySelector('[data-speak]');
+        el.classList.toggle('speaking', !!a && a.sec === i);
+        if (!b) return;
+        const c = st.cur[i];
+        if (a && a.sec === i) { b.textContent = a.paused ? '▶ Riprendi' : '❚❚ Pausa'; b.classList.add('play'); }
+        else { b.classList.remove('play'); b.textContent = st.sel && st.sel.sec === i ? '▶ Ascolta la selezione' : (c !== undefined ? '▶ Ascolta da qui' : '▶ Ascolta'); }
+        const stop = el.querySelector('[data-stop]'); if (stop) stop.hidden = !(a && a.sec === i);
+      });
+    }
+    function paintWords(){
+      root.querySelectorAll('.dz-sec').forEach(el => {
+        const i = +el.dataset.sec, a = st.audio;
+        const ws = el.querySelectorAll('.w');
+        let nowEl = null;
+        ws.forEach(w => { w.classList.remove('now'); w.classList.toggle('cur', st.cur[i] !== undefined && +w.dataset.o === st.cur[i] && !(a && a.sec === i)); });
+        if (a && a.sec === i && a.pos >= 0) { ws.forEach(w => { if (+w.dataset.o <= a.pos) nowEl = w; }); if (nowEl) nowEl.classList.add('now'); }
+      });
+    }
+
+    const count = o => Object.keys(o).length;
+    const pill = (label, done, tot) => tot ? `<span class="dz-pill"><span class="dz-meter"><i style="width:${Math.round(done/tot*100)}%"></i></span>${label} ${done}/${tot}</span>` : '';
+
+    /* ---------- quiz uno alla volta (Quiz e Vero o falso) ---------- */
+    function items(kind){
+      if (kind === 'quiz') return (data.quiz || []).map(q => ({ q: q.q, opts: q.options, a: q.answer, exp: q.explain }));
+      return (data.truefalse || []).map(t => ({ q: t.s, opts: ['Vero', 'Falso'], a: t.answer ? 0 : 1, exp: t.explain, tf: true }));
+    }
+    function startRun(kind, list){ st.run[kind] = { list, i: 0, score: 0, ans: null, log: [] }; }
+    function runHTML(kind){
+      const all = items(kind), R = st.run[kind];
+      const title = kind === 'quiz' ? '🎯 Quiz: verifica che cosa hai imparato' : '✅ Vero o falso';
+      if (!R) {
+        const opts = [0, 5, 10, 15].filter(n => n === 0 || n < all.length);
+        return `<div class="dz-card"><h2>${title}</h2><p style="margin:0 0 12px">${all.length} ${kind === 'quiz' ? 'domande' : 'affermazioni'}. Rispondi una alla volta: dopo ogni risposta leggi la spiegazione.</p>
+          <div class="dz-row"><label for="dz-n-${kind}">Quante?</label><select id="dz-n-${kind}" data-nq="${kind}">${opts.map(n => `<option value="${n}" ${st.nq[kind] === n ? 'selected' : ''}>${n ? n : 'Tutte (' + all.length + ')'}</option>`).join('')}</select>
+          <button class="dz-btn pri" data-run="${kind}">Inizia ▶</button>${st.best[kind] != null ? `<span class="dz-pill">Ultimo risultato: ${st.best[kind]}%</span>` : ''}</div></div>`;
+      }
+      const n = R.list.length;
+      if (R.i >= n) {
+        const pc = Math.round(R.score / n * 100), wrong = R.log.filter(x => !x.ok);
+        st.best[kind] = pc;
+        return `<div class="dz-card" style="text-align:center"><h2 style="justify-content:center">Risultato</h2><div class="dz-score">${R.score} / ${n}</div>
+          <p style="margin:0 0 12px;font-weight:700">${pc === 100 ? '🎉 Perfetto!' : pc >= 70 ? '👍 Molto bene!' : pc >= 50 ? '🙂 Ci sei quasi: ripassa gli errori.' : '💪 Rileggi le schede e riprova!'}</p>
+          <div class="dz-row" style="justify-content:center"><button class="dz-btn pri" data-again="${kind}">Rifai</button>${wrong.length ? `<button class="dz-btn" data-errs="${kind}">Ripeti solo gli errori (${wrong.length})</button>` : ''}<button class="dz-btn" data-change="${kind}">Cambia impostazioni</button></div></div>
+          ${wrong.length ? `<div class="dz-card"><h2>Da ripassare</h2><ol class="dz-wrong">${wrong.map(w => `<li><b>${rich(w.it.q)}</b><small>Risposta giusta: ${esc(w.it.opts[w.it.a])}${w.it.exp ? ' · ' + esc(plain(w.it.exp)) : ''}</small></li>`).join('')}</ol></div>` : ''}`;
+      }
+      const it = R.list[R.i];
+      return `<div class="dz-card"><div class="dz-qmeta"><span>${kind === 'quiz' ? 'Domanda' : 'Affermazione'} ${R.i + 1} di ${n}</span><span>Punti: ${R.score}</span></div>
+        <div class="dz-qbar"><i style="width:${R.i / n * 100}%"></i></div>
+        <div class="dz-qq">${rich(it.q)}</div>
+        <div class="dz-qopts">${it.opts.map((o, j) => { let c = ''; if (R.ans != null) { if (j === it.a) c = 'ok'; else if (j === R.ans) c = 'ko'; } return `<button class="dz-qopt ${c}" data-ans="${kind}" data-j="${j}" ${R.ans != null ? 'disabled' : ''}>${it.tf ? '' : `<b>${LETT[j] || j + 1}</b>`}<span>${rich(o)}</span></button>`; }).join('')}</div>
+        ${R.ans != null ? `<div class="dz-exp ${R.ans === it.a ? 'ok' : 'ko'}"><b>${R.ans === it.a ? '✓ Giusto!' : '✗ Non proprio.'}</b> ${rich(it.exp || '')}</div><div class="dz-next" style="margin-top:10px"><button class="dz-btn pri" data-nextq="${kind}">${R.i + 1 < n ? 'Avanti →' : 'Vedi il risultato'}</button></div>` : ''}</div>`;
+    }
+
+    function sectionHTML(s, i){
+      const c = COL[i % COL.length];
+      const ims = (s.images || []).filter(x => img(x.key)).slice(0, 3);
+      const fx = u => { u = String(u||'').trim(); return /^https?:\/\/\S+$/i.test(u) ? u : /^[\w-]+(\.[\w-]+)+([\/?#]\S*)?$/.test(u) ? 'https://' + u : ''; };
+      const ls = (s.links || []).map(l => ({ title: l && l.title, url: fx(l && l.url) })).filter(l => l.url).slice(0, 3);
+      const tb = s.table && (s.table.rows || []).length ? `<div class="dz-tblwrap"><table>${(s.table.head || []).length ? `<tr>${s.table.head.map(h => `<th>${rich(h)}</th>`).join('')}</tr>` : ''}${s.table.rows.map(r => `<tr>${r.map(x => `<td>${rich(x)}</td>`).join('')}</tr>`).join('')}</table></div>` : '';
+      return `<article class="dz-card dz-sec ${st.read[i]?'done':''}" data-sec="${i}">
+        <h2><span class="dz-num">${i+1}</span><span>${esc(s.title)}</span></h2>
+        <p class="dz-text">${wordsHtml(s.body)}</p>
+        ${tb}
+        ${s.remember ? `<div class="dz-box ricorda"><b>Ricorda:</b> ${rich(s.remember)}</div>` : ''}
+        ${s.warning ? `<div class="dz-box attenzione"><b>Attenzione:</b> ${rich(s.warning)}</div>` : ''}
+        ${ims.length ? `<div class="dz-gal ${ims.length===1?'one':''}">${ims.map(x => `<figure class="dz-fig"><img src="${img(x.key)}" alt="${esc(x.alt || s.title)}" data-zoom>${x.alt?`<figcaption>${esc(x.alt)}</figcaption>`:''}</figure>`).join('')}</div>` : ''}
+        ${ls.length ? `<div class="dz-links">${ls.map(l => `<a class="dz-link" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer"><span class="ic" aria-hidden="true">↗</span><span><b>${esc(l.title || 'Esercizio interattivo')}</b><small>${esc(l.url.replace(/^https?:\/\//i,'').replace(/\/$/,'').slice(0,60))}</small></span></a>`).join('')}</div>` : ''}
+        ${synth ? `<p class="dz-hint">Clicca su una parola per ascoltare da lì, oppure seleziona una parte del testo.</p>` : ''}
+        <div class="dz-sec-actions">
+          ${synth ? `<button class="dz-btn" data-speak="${i}">▶ Ascolta</button><button class="dz-btn" data-stop="${i}" hidden>■ Stop</button>` : ''}
+          <button class="dz-btn ${st.read[i]?'on':''}" data-read="${i}" aria-pressed="${!!st.read[i]}">${st.read[i]?'✓ Letto':'Segna come letto'}</button>
+        </div></article>`;
+    }
+
+    function panel(){
+      const t = st.tab;
+      if (t === 'leggi'){
+        let h = '';
+        if ((data.objectives||[]).length) h += `<div class="dz-goals"><h3>Alla fine di questa scheda saprai…</h3><ul>${data.objectives.map(o=>`<li>${rich(o)}</li>`).join('')}</ul></div>`;
+        h += `<div class="dz-blocks">${data.sections.map(sectionHTML).join('')}</div>`;
+        return h;
+      }
+      if (t === 'disegni') return diagrams.map(id => `<div class="dz-card" data-diag="${esc(id)}"></div>`).join('');
+      if (t === 'info'){
+        return `<div class="dz-card">${info.title ? `<h2>${esc(info.title)}</h2>` : ''}
+          <div class="dz-info">${info.items.map((it,i) => { const c = COL[i % COL.length]; const src = img(it.image); const vz = !src && it.visual ? visualHTML(it.visual) : '';
+            const wide = vz && WIDE[it.visual.type];
+            return `<article class="dz-ic ${wide ? 'wide' : ''}" style="--k:var(--${c});--ks:var(--${c}s);--kb:var(--${c}b)">
+              ${src ? `<div class="ph"><img src="${src}" alt="${esc(it.title)}" data-zoom></div>` : vz ? `<div class="vz vz-${esc(it.visual.type)}">${it.value && it.visual.type === 'icon' ? `<span class="big">${esc(it.value)}</span>` : ''}${vz}</div>` : (it.value ? `<div class="ph"><span class="big">${esc(it.value)}</span></div>` : '')}
+              <div class="bd"><div class="hd"><span class="n">${i+1}</span><h3>${esc(it.title)}</h3></div>
+              ${(src || (vz && it.visual.type !== 'icon')) && it.value ? `<span class="val">${esc(it.value)}</span>` : ''}
+              <p>${rich(it.text)}</p></div></article>`; }).join('')}</div></div>`;
+      }
+      if (/^map\d+$/.test(t)) { const m = maps[+t.slice(3)]; return `<div class="dz-card"><h2>🧠 ${esc(m.title || 'Mappa')}</h2><div data-mm="${t.slice(3)}"></div></div>`; }
+      if (/^iq\d+$/.test(t)) return `<div class="dz-card dz-qi" data-iq="${t.slice(2)}"></div>`;
+      if (t === 'glossario'){
+        const q = st.q.toLowerCase();
+        const its = data.glossary.filter(g => !q || (g.term+' '+g.def).toLowerCase().includes(q)).slice().sort((a, b) => a.term.localeCompare(b.term, 'it', { sensitivity: 'base' }));
+        return `<div class="dz-card"><h2>📚 Glossario <span class="dz-gn">${data.glossary.length} parole</span></h2><input class="dz-search" id="dz-search" type="search" placeholder="🔍 Cerca una parola…" value="${esc(st.q)}" aria-label="Cerca nel glossario">
+          <dl class="dz-gloss">${its.map(g=>`<div class="dz-term"><dt>${esc(g.term)}</dt><dd>${rich(g.def)}</dd></div>`).join('') || '<p class="dz-empty">Nessuna parola trovata.</p>'}</dl></div>`;
+      }
+      if (t === 'flashcard'){
+        const c = data.flashcards[st.card];
+        return `<div class="dz-card"><div class="dz-card-wrap">
+          <button class="dz-flash ${st.flip?'back':''}" data-flip aria-label="Gira la carta">
+            ${st.flip ? `<small>Risposta</small><span>${rich(c.back)}</span>` : `<small>Domanda · tocca per girare</small><strong>${rich(c.front)}</strong>`}
+          </button>
+          <div class="dz-card-nav"><button class="dz-btn" data-card="-1" ${st.card===0?'disabled':''}>← Prima</button>
+          <span>${st.card+1} / ${data.flashcards.length}</span>
+          <button class="dz-btn" data-card="1" ${st.card===data.flashcards.length-1?'disabled':''}>Dopo →</button></div></div></div>`;
+      }
+      if (t === 'quiz' || t === 'vf') return runHTML(t);
+      return '';
+    }
+    function mountWidgets(){
+      root.querySelectorAll('[data-diag]').forEach(el => Diagrams.mount(el, el.dataset.diag));
+      root.querySelectorAll('[data-mm]').forEach(el => MindMap.mount(el, maps[+el.dataset.mm]));
+      root.querySelectorAll('[data-iq]').forEach(el => { const q = iqs[+el.dataset.iq]; QuizRender.mount(el, QuizRender.normalize(JSON.parse(JSON.stringify(q)))); });
+    }
+
+    function render(){
+      const nav0 = root.querySelector('.dz-tabs'), navX = nav0 ? nav0.scrollLeft : 0;
+      const secs = (data.sections||[]).length;
+      const k = tabs.findIndex(t => t[0] === st.tab), nx = tabs[k + 1];
+      root.innerHTML = `<div class="dz ${st.big?'big':''}" style="--acc:${TH.acc};--acc2:${TH.acc2}">
+        <header class="dz-head">
+          <div class="dz-htop"><span class="dz-logo" aria-hidden="true">${esc(data.emoji || TH.emoji)}</span>
+            <div class="dz-htext"><div class="dz-chips">${data.subject?`<span class="dz-chip">${esc(data.subject)}</span>`:''}${data.level?`<span class="dz-chip">${esc(data.level)}</span>`:''}</div>
+              <h1>${esc(data.title)}</h1>${data.intro?`<p class="dz-sub">${rich(data.intro)}</p>`:''}</div>
+            <div class="dz-tools">${pill('Letto', count(st.read), secs)}${st.best.quiz != null ? `<span class="dz-pill">🎯 ${st.best.quiz}%</span>` : ''}${st.best.vf != null ? `<span class="dz-pill">✅ ${st.best.vf}%</span>` : ''}
+              <button class="dz-btn" data-big aria-pressed="${st.big}" title="Ingrandisci il testo">${st.big?'A−':'A+'}</button></div></div>
+          <nav class="dz-tabs" role="tablist">${tabs.map(t=>`<button class="dz-tab" role="tab" data-tab="${t[0]}" aria-selected="${st.tab===t[0]}">${esc(t[1])}${t[2] > 0 ? `<span class="n">${t[2]}</span>` : ''}</button>`).join('')}</nav>
+        </header>
+        <main class="dz-main"><section class="dz-panel" role="tabpanel">${tabs.length ? panel() : '<p class="dz-empty">Questa dashboard è ancora vuota.</p>'}
+          ${nx ? `<div class="dz-next"><button class="dz-btn" data-tab="${nx[0]}" data-gonext>Avanti: ${esc(nx[1])} →</button></div>` : ''}</section></main>
+        <div class="dz-audio" role="region" aria-label="Lettura ad alta voce" aria-live="polite" hidden></div>
+      </div>`;
+      const nav = root.querySelector('.dz-tabs'), on = root.querySelector('.dz-tab[aria-selected="true"]');
+      if (nav) { nav.scrollLeft = navX; if (on && (on.offsetLeft < nav.scrollLeft || on.offsetLeft + on.offsetWidth > nav.scrollLeft + nav.clientWidth)) nav.scrollLeft = on.offsetLeft - 20; }
+      mountWidgets();
+      paintAudio(); paintWords();
+    }
+    root.onclick = e => {
+      const z = e.target.closest('[data-zoom]');
+      if (z && root.contains(z)) { const lb = document.createElement('div'); lb.className = 'dz-lb'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-label','Immagine ingrandita, clicca per chiudere'); lb.innerHTML = `<img src="${z.getAttribute('src')}" alt="${esc(z.alt)}">`; lb.tabIndex = -1; lb.onclick = () => lb.remove(); lb.onkeydown = ev => { if (ev.key === 'Escape') lb.remove(); }; document.body.appendChild(lb); lb.focus(); return; }
+      const w = e.target.closest('.dz-text .w');
+      if (w) {
+        const sel = window.getSelection && window.getSelection();
+        if (sel && !sel.isCollapsed) return;
+        const i = +w.closest('.dz-sec').dataset.sec, o = +w.dataset.o;
+        st.sel = null;
+        if (st.audio && st.audio.sec === i) { speakSection(i, o); return; }
+        st.cur = {}; st.cur[i] = o; paintWords(); paintSecButtons(); return;
+      }
+      if (e.target.closest('[data-diag],[data-mm],[data-iq]')) return;
+      const b = e.target.closest('button'); if (!b || !root.contains(b)) return;
+      const d = b.dataset;
+      if (d.speak !== undefined){
+        const i = +d.speak;
+        if (st.audio && st.audio.sec === i) { togglePause(); return; }
+        if (st.sel && st.sel.sec === i) { const s = st.sel; st.sel = null; speakSection(i, 0, s); return; }
+        speakSection(i, st.cur[i] || 0); return;
+      }
+      if (d.stop !== undefined || d.astop !== undefined){ stopAudio(); return; }
+      if (d.apause !== undefined){ togglePause(); return; }
+      if (d.arate !== undefined){ setRate(); return; }
+      if (d.tab){ if (d.tab !== st.tab) stopAudio(true); st.tab = d.tab; st.flip = false; render(); if (opts.onTab) opts.onTab(st.tab); if (d.gonext !== undefined) { const h = root.querySelector('.dz-head'); if (h && h.scrollIntoView) h.scrollIntoView({ block: 'start' }); } return; }
+      if (d.read !== undefined){ st.read[d.read] ? delete st.read[d.read] : st.read[d.read] = true; render(); return; }
+      if (d.flip !== undefined){ st.flip = !st.flip; }
+      else if (d.card){ st.card = Math.max(0, Math.min(data.flashcards.length-1, st.card + (+d.card))); st.flip = false; }
+      else if (d.run){ const k = d.run, n = st.nq[k], l = shuffle(items(k)); startRun(k, n ? l.slice(0, n) : l); }
+      else if (d.ans){ const R = st.run[d.ans]; if (!R || R.ans != null) return; R.ans = +d.j; const it = R.list[R.i], ok = R.ans === it.a; if (ok) R.score++; R.log.push({ it, ok }); }
+      else if (d.nextq){ const R = st.run[d.nextq]; R.i++; R.ans = null; }
+      else if (d.again){ const R = st.run[d.again]; startRun(d.again, shuffle(R.list)); }
+      else if (d.errs){ const R = st.run[d.errs]; startRun(d.errs, shuffle(R.log.filter(x => !x.ok).map(x => x.it))); }
+      else if (d.change){ st.run[d.change] = null; }
+      else if (d.big !== undefined){ st.big = !st.big; render(); return; }
+      else return;
+      render();
+    };
+    root.onchange = e => { const s = e.target.closest('[data-nq]'); if (s) st.nq[s.dataset.nq] = +s.value; };
+    root.addEventListener('mouseup', captureSel);
+    root.addEventListener('touchend', () => setTimeout(captureSel, 50));
+    function captureSel(){
+      const sel = window.getSelection && window.getSelection();
+      if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+      const p = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
+      const secEl = p && p.closest && p.closest('.dz-sec');
+      const text = sel.toString().trim();
+      if (!secEl || !root.contains(secEl) || text.length < 2) return;
+      const i = +secEl.dataset.sec;
+      const aw = p.closest('.w');
+      st.sel = { sec: i, text, o: aw ? +aw.dataset.o : -1 };
+      st.cur = {}; paintWords(); paintSecButtons();
+    }
+    root.oninput = e => {
+      if (e.target.id === 'dz-search'){ st.q = e.target.value; const pos = e.target.selectionStart; render(); const s = root.querySelector('#dz-search'); s.focus(); try{ s.setSelectionRange(pos,pos);}catch(_){} }
+    };
+    render();
+    if (opts.onTab) opts.onTab(st.tab);
+    return { stop: () => stopAudio(true), tab: () => st.tab, setTab: t => { if (tabs.find(x => x[0] === t)) { st.tab = t; render(); if (opts.onTab) opts.onTab(t); } } };
+  }
+  return { mount, esc, theme };
+})();
+</script>
+<script>DashRender.mount(document.getElementById('app'), {"title":"Il sangue e la circolazione sanguigna","subject":"Scienze","level":"3ª media","intro":"Il sangue ci tiene in vita ogni istante: regola la temperatura, trasporta le sostanze, ripara le ferite e ci difende dalle malattie. Scopri come è fatto, come circola e come proteggere il tuo cuore!","emoji":"🫀","objectives":["Descrivere la composizione del sangue e le funzioni delle sue cellule","Spiegare il percorso del sangue nella piccola e nella grande circolazione","Distinguere arterie, vene e capillari","Riconoscere i gruppi sanguigni, il fattore Rhesus e il ruolo del sistema immunitario"],"sections":[{"title":"Dove si forma il sangue e com'è composto","body":"Il sangue è costituito da **plasma** e **cellule** (globuli rossi, globuli bianchi e piastrine). Il plasma rappresenta la parte liquida del sangue, le cellule la parte solida. Il **55%** del sangue è composto da plasma e il **45%** da cellule. Il plasma è formato principalmente da **acqua** in cui sono disciolti sali minerali, nutrienti e ormoni. Le cellule sanguigne si formano nel **midollo osseo rosso** delle vertebre, dello sterno e di una parte del bacino. Tutte derivano da un unico tipo di **cellula madre** che genera, in base ai bisogni dell'organismo, l'uno o l'altro tipo di cellule.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Componente","Percentuale","Natura"],"rows":[["Plasma","55%","Parte liquida (acqua, sali minerali, nutrienti, ormoni)"],["Cellule","45%","Parte solida (globuli rossi, globuli bianchi, piastrine)"]]}},{"title":"Le funzioni del sangue e le sue malattie","body":"Il sangue svolge **quattro funzioni**. **Termoregolazione**: con il caldo il sangue va in superficie per raffreddarsi, in inverno resta in profondità per evitare di perdere calore. **Trasporto**: porta alle cellule diossigeno e sostanze utili e allontana gli scarti, come il diossido di carbonio. **Coagulazione**: le piastrine (trombociti) formano un coagulo che ripara la ferita. **Difesa**: i globuli bianchi (leucociti) combattono le infezioni. Due malattie sono legate alle componenti del sangue. Le **leucemie** sono dovute a una crescita incontrollata di globuli bianchi non maturi nel midollo rosso. Le **anemie** sono dovute a un trasporto difficoltoso di diossigeno e hanno come sintomi debolezza e pallore.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Funzione / Malattia","Chi è coinvolto","Descrizione"],"rows":[["Termoregolazione","Sangue","Va in superficie con il caldo, resta in profondità in inverno"],["Trasporto","Globuli rossi","Portano diossigeno e sostanze utili, allontanano gli scarti"],["Coagulazione","Piastrine (trombociti)","Formano un coagulo che ripara la ferita"],["Difesa","Globuli bianchi (leucociti)","Combattono le infezioni"],["Leucemie","Globuli bianchi","Crescita incontrollata di globuli bianchi non maturi"],["Anemie","Trasporto di diossigeno","Debolezza e pallore"]]}},{"title":"Gruppi sanguigni e trasfusioni","body":"Ogni cellula è rivestita da **antigeni** che la identificano come appartenente a quell'individuo. I **linfociti** riconoscono gli antigeni estranei e producono **anticorpi** per neutralizzarli. Sui globuli rossi ci sono circa 55 tipi di antigeni. I più importanti sono **A**, **B** e **D** (fattore Rhesus). I gruppi sono A, B, AB, 0 e Rh+ o Rh-. Nelle trasfusioni possiamo ricevere sangue solamente se non sono presenti antigeni diversi dai nostri. Il **gruppo 0** può donare a tutti ma può ricevere solo da 0. Il **gruppo AB** può donare solo ad AB ma può ricevere da tutti. Una persona **Rh-** non deve ricevere sangue Rh+ perché produrrebbe **anticorpi anti-D**.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Gruppo","Può donare a","Può ricevere da"],"rows":[["0","Tutti","Solo 0"],["A","A e AB","A e 0"],["B","B e AB","B e 0"],["AB","Solo AB","Tutti"]]}},{"title":"Il sangue ci difende","body":"La **pelle** e le **mucose** sono una barriera contro i microrganismi. Se alcuni agenti patogeni entrano ugualmente, interviene la **fagocitosi**: monociti, macrofagi e granulociti inglobano i microrganismi. È un processo immediato ma poco efficace. Poi subentra la **risposta immunitaria**: i linfociti producono anticorpi specifici, come una chiave per la sua serratura. I linfociti **memorizzano** le caratteristiche dell'antigene, così in un nuovo contatto gli anticorpi sono prodotti molto rapidamente. Nell'**immunizzazione attiva** (vaccinazione preventiva) si iniettano piccole quantità di agenti patogeni e la protezione è duratura. Nell'**immunizzazione passiva** (vaccinazione terapeutica) si inietta un siero con anticorpi e la protezione non è duratura.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Tipo","Cosa si inietta","Protezione"],"rows":[["Immunizzazione attiva (preventiva)","Piccole quantità di agenti patogeni","Duratura"],["Immunizzazione passiva (terapeutica)","Siero con anticorpi","Non duratura"]]}},{"title":"Il percorso del sangue e il cuore","body":"Galeno pensava che il sangue fosse prodotto di continuo nel fegato. **William Harvey** dimostrò che il sangue circola a senso unico in un **sistema chiuso**, grazie al cuore. Si parla di **doppia circolazione** perché il sangue compie due percorsi: la **piccola circolazione** (dal cuore ai polmoni e ritorno) e la **grande circolazione** (dal cuore agli organi e ritorno). Il cuore è una pompa fatta di **miocardio**, un muscolo involontario. Il **setto** lo divide in due metà: a destra scorre il sangue da ossigenare, a sinistra quello ossigenato. Ogni metà ha un **atrio** e un **ventricolo**. Le arterie **coronarie** nutrono il cuore. Il battito cardiaco si svolge in fasi coordinate e il ritmo varia secondo le necessità di diossigeno.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Circolazione","Percorso","Sangue nel cuore"],"rows":[["Piccola","Dal cuore ai polmoni e ritorno","Cuore destro: sangue da ossigenare"],["Grande","Dal cuore agli organi e ritorno","Cuore sinistro: sangue ossigenato"]]}},{"title":"Arterie, vene e capillari","body":"Le **arterie** portano il sangue dal cuore all'organo, le **vene** dall'organo al cuore. Nei **capillari** il sangue scorre dalle arterie alle vene. I capillari hanno il diametro minore e la circolazione è molto **lenta**: questo permette gli **scambi** tra sangue e cellule. Le arterie hanno **pareti più spesse** perché resistono alla pressione elevata. Le vene hanno **valvole** che impediscono il riflusso di sangue. Le arterie sono più in profondità, le vene sono visibili in superficie.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Vaso","Direzione del sangue","Caratteristiche"],"rows":[["Arterie","Dal cuore all'organo","Pareti spesse, più in profondità"],["Vene","Dall'organo al cuore","Valvole, visibili in superficie"],["Capillari","Dalle arterie alle vene","Diametro minore, circolazione lenta, scambi con le cellule"]]}},{"title":"Le malattie del sistema cardiocircolatorio","body":"L'**arteriosclerosi** è l'ispessimento e l'irrigidimento delle pareti delle arterie dovuto al deposito di sostanze come il colesterolo e la nicotina. I coaguli fermi sono detti **trombi**, quelli mobili **emboli**. Un'ostruzione parziale nelle coronarie può causare l'**angina pectoris**, una totale causa l'**infarto**. L'infarto cerebrale si chiama **ictus**. Per ridurre i fattori di rischio servono uno **stile di vita sano**, un'alimentazione equilibrata, **esercizio fisico**, massa corporea adeguata e **niente fumo**.","images":[],"links":[],"remember":"","warning":"","table":{"head":["Termine","Che cos'è"],"rows":[["Arteriosclerosi","Ispessimento e irrigidimento delle pareti delle arterie"],["Trombo","Coagulo fermo"],["Embolo","Coagulo mobile"],["Angina pectoris","Ostruzione parziale delle coronarie"],["Infarto","Ostruzione totale delle coronarie"],["Ictus","Infarto cerebrale"]]}}],"infographic":{"title":"Il sangue in sintesi","items":[{"title":"Plasma e cellule","value":"55% / 45%","text":"Il 55% del sangue è plasma, il 45% è componente cellulare.","image":"","visual":{"type":"pie","unit":"%","data":[{"label":"Plasma","value":55},{"label":"Cellule","value":45}]}},{"title":"Quattro funzioni","value":"4","text":"Termoregolazione, trasporto, coagulazione e difesa.","image":"","visual":{"type":"steps","steps":["Termoregolazione","Trasporto","Coagulazione","Difesa"],"cycle":false}},{"title":"Gruppi sanguigni","value":"A, B, AB, 0","text":"Ogni gruppo può essere Rh+ o Rh-, secondo la presenza dell'antigene D.","image":"","visual":{"type":"compare","left":{"title":"Gruppo 0","points":["Dona a tutti","Riceve solo da 0"]},"right":{"title":"Gruppo AB","points":["Dona solo ad AB","Riceve da tutti"]}}},{"title":"Doppia circolazione","value":"2 percorsi","text":"Piccola circolazione verso i polmoni, grande circolazione verso gli organi.","image":"","visual":{"type":"compare","left":{"title":"Piccola circolazione","points":["Cuore → polmoni","Ritorno al cuore","Cuore destro"]},"right":{"title":"Grande circolazione","points":["Cuore → organi","Ritorno al cuore","Cuore sinistro"]}}},{"title":"Il cuore","value":"4 cavità","text":"Due atri e due ventricoli, divisi dal setto in destra e sinistra.","image":"","visual":{"type":"bars","unit":"cavità","data":[{"label":"Atri","value":2},{"label":"Ventricoli","value":2}]}},{"title":"Velocità nei vasi","value":"0.1 cm/s","text":"Nei capillari il sangue rallenta enormemente, così avvengono gli scambi con le cellule.","image":"","visual":{"type":"icon","emoji":"🐌"}},{"title":"Dal midollo alla difesa","value":"Immunità","text":"Dopo l'ingresso di un patogeno intervengono barriere, fagocitosi e risposta immunitaria.","image":"","visual":{"type":"steps","steps":["Barriera di pelle e mucose","Fagocitosi","Anticorpi dei linfociti","Memoria immunitaria"],"cycle":false}},{"title":"Fattori di rischio","value":"Stile di vita","text":"Cattiva alimentazione, sedentarietà, fumo e sovrappeso danneggiano il sistema cardiocircolatorio.","image":"","visual":{"type":"icon","emoji":"🚭"}}]},"glossary":[{"term":"Plasma","def":"La parte liquida del sangue, formata principalmente da acqua in cui sono disciolte varie sostanze."},{"term":"Emoglobina","def":"Proteina dei globuli rossi che si lega al diossigeno nei polmoni e lo trasporta alle cellule."},{"term":"Antigene","def":"Sostanza che riveste le cellule e le fa identificare come appartenenti a un individuo."},{"term":"Anticorpo","def":"Proteina prodotta dai linfociti per neutralizzare gli antigeni estranei."},{"term":"Fagocitosi","def":"Processo in cui i microrganismi entrati nel corpo vengono inglobati da monociti, macrofagi e granulociti."},{"term":"Miocardio","def":"Speciale tessuto muscolare del cuore, le cui fibre si contraggono in modo involontario."},{"term":"Setto","def":"Parete che divide il cuore in due metà che non comunicano tra loro."},{"term":"Capillari","def":"Tubi molto stretti in cui si ramificano le arterie e dove avvengono gli scambi con le cellule."},{"term":"Midollo osseo rosso","def":"Tessuto di vertebre, sterno e bacino in cui si formano le cellule del sangue."},{"term":"Cellula madre","def":"Cellula da cui derivano tutte le cellule del sangue, a seconda dei bisogni dell'organismo."},{"term":"Globuli rossi (eritrociti)","def":"Cellule del sangue che trasportano il diossigeno grazie all'emoglobina."},{"term":"Globuli bianchi (leucociti)","def":"Cellule del sangue che difendono l'organismo dalle infezioni."},{"term":"Piastrine (trombociti)","def":"Cellule del sangue che formano il coagulo e riparano le ferite."},{"term":"Coagulazione","def":"Processo con cui le piastrine formano un coagulo che chiude la ferita."},{"term":"Termoregolazione","def":"Funzione del sangue che mantiene stabile la temperatura del corpo."},{"term":"Leucemia","def":"Malattia dovuta alla crescita incontrollata di globuli bianchi non maturi nel midollo rosso."},{"term":"Anemia","def":"Malattia con trasporto difficoltoso di diossigeno, che causa debolezza e pallore."},{"term":"Linfociti","def":"Globuli bianchi che riconoscono gli antigeni estranei, producono anticorpi e ne memorizzano le caratteristiche."},{"term":"Fattore Rhesus","def":"Antigene D sui globuli rossi: chi lo ha è Rh+, chi non lo ha è Rh-."},{"term":"Risposta immunitaria","def":"Produzione di anticorpi specifici da parte dei linfociti contro un agente patogeno."},{"term":"Agente patogeno","def":"Microrganismo che può causare una malattia."},{"term":"Immunizzazione attiva","def":"Vaccinazione preventiva con piccole quantità di patogeni: la protezione è duratura."},{"term":"Immunizzazione passiva","def":"Vaccinazione terapeutica con un siero di anticorpi: la protezione non è duratura."},{"term":"Doppia circolazione","def":"Il sangue compie due percorsi: la piccola e la grande circolazione."},{"term":"Piccola circolazione","def":"Percorso del sangue dal cuore ai polmoni e ritorno."},{"term":"Grande circolazione","def":"Percorso del sangue dal cuore agli organi e ritorno."},{"term":"Atrio","def":"Cavità del cuore che riceve il sangue; ce ne sono due."},{"term":"Ventricolo","def":"Cavità del cuore che pompa il sangue fuori; ce ne sono due."},{"term":"Coronarie","def":"Arterie che portano il sangue al muscolo del cuore per nutrirlo."},{"term":"Arteria","def":"Vaso a parete spessa che porta il sangue dal cuore all'organo."},{"term":"Vena","def":"Vaso con valvole che porta il sangue dall'organo al cuore."},{"term":"Arteriosclerosi","def":"Ispessimento e irrigidimento delle pareti delle arterie per deposito di sostanze come il colesterolo."},{"term":"Trombo ed embolo","def":"Coagulo fermo (trombo) o mobile (embolo) che può ostruire un vaso."},{"term":"Infarto","def":"Ostruzione totale delle coronarie; se avviene nel cervello si chiama ictus."}],"flashcards":[{"front":"Dove si formano le cellule del sangue?","back":"Nel midollo osseo rosso di vertebre, sterno e parte del bacino."},{"front":"Quale funzione hanno le piastrine?","back":"Servono alla coagulazione del sangue: si attaccano una all'altra e formano un coagulo."},{"front":"Cosa fanno i linfociti?","back":"Riconoscono e memorizzano gli agenti patogeni e producono anticorpi."},{"front":"Cos'è la piccola circolazione?","back":"Il percorso del sangue dal cuore ai polmoni e ritorno al cuore."},{"front":"Cos'è la grande circolazione?","back":"Il percorso del sangue dal cuore ai vari organi e ritorno al cuore."},{"front":"Perché la parete sinistra del cuore è più spessa?","back":"Perché deve pompare il sangue in tutto il corpo e ci vuole più forza."},{"front":"Che differenza c'è tra trombo ed embolo?","back":"Il trombo resta fermo dove si è formato, l'embolo è mobile e viene trascinato dal sangue."},{"front":"Che cos'è l'immunizzazione attiva?","back":"Una vaccinazione preventiva con piccole quantità di agenti patogeni: la protezione è duratura."}],"quiz":[{"q":"Quale parte del sangue è liquida?","options":["Il plasma","Le piastrine","I globuli rossi"],"answer":0,"explain":"Il plasma rappresenta la parte liquida del sangue, mentre le cellule sono la parte solida."},{"q":"Quali cellule trasportano il diossigeno?","options":["I globuli bianchi","I globuli rossi","Le piastrine"],"answer":1,"explain":"Gli eritrociti trasportano l'emoglobina a cui è legato il diossigeno."},{"q":"A chi può donare il sangue una persona del gruppo 0?","options":["Solo al gruppo 0","Solo al gruppo AB","A tutti"],"answer":2,"explain":"Il gruppo 0 non ha antigeni e può donare a tutti, ma può ricevere solo da 0."},{"q":"Cosa succede nei capillari?","options":["Il sangue scorre molto lentamente e avvengono gli scambi con le cellule","Il sangue scorre più veloce che nelle arterie","Il sangue torna direttamente al cuore"],"answer":0,"explain":"La bassa velocità permette alle sostanze utili di passare alle cellule e a quelle di scarto di entrare nel sangue."},{"q":"Perché si parla di doppia circolazione?","options":["Perché il cuore ha due valvole","Perché il sangue compie due percorsi: piccola e grande circolazione","Perché ci sono due tipi di vasi"],"answer":1,"explain":"Il sangue compie la piccola circolazione verso i polmoni e la grande verso gli organi."},{"q":"Perché una persona Rh- non deve ricevere sangue Rh+?","options":["Perché perderebbe troppo plasma","Perché non ha globuli rossi","Perché produrrebbe anticorpi anti-D"],"answer":2,"explain":"Non avendo l'antigene D, il ricevente Rh- produrrebbe anticorpi anti-D che causerebbero una pericolosa reazione in una trasfusione successiva."}],"truefalse":[{"s":"Tutte le cellule sanguigne derivano da un unico tipo di cellula madre.","answer":true,"explain":"La cellula madre genera l'uno o l'altro tipo di cellule in base ai bisogni dell'organismo."},{"s":"Nel cuore il sangue ossigenato e quello da ossigenare si mescolano.","answer":false,"explain":"Il setto divide il cuore in due metà e i due tipi di sangue non si mescolano mai."},{"s":"Nelle arterie il sangue scorre dal cuore all'organo.","answer":true,"explain":"Nelle vene invece scorre dall'organo al cuore."},{"s":"La fagocitosi è un processo lento ma molto efficace.","answer":false,"explain":"È immediato ma poco efficace."},{"s":"Un sportivo, a parità di sforzo, ha un battito cardiaco rallentato rispetto a una persona non allenata.","answer":true,"explain":"Così il suo cuore è sottoposto a una sollecitazione minore."},{"s":"Una persona del gruppo AB può ricevere sangue solo dal gruppo AB.","answer":false,"explain":"Il gruppo AB può donare solo ad AB, ma può ricevere da tutti."}],"diagrams":["heart","circ","vessels","blood"],"maps":[],"quizzes":[]}, { images: {} });</script>
+</body></html>

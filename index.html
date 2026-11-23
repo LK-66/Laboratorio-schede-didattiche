@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Schede didattiche</title>
+<meta name="apple-mobile-web-app-title" content="Schede">
+<meta name="theme-color" content="#2457A6">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+:root{--bg:#F6F8FC;--card:#fff;--ink:#1F2A3A;--ink2:#5B6778;--line:#E2E7EF;--acc:#2457A6;--acc2:#E6EEFB}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Nunito,"Segoe UI",system-ui,sans-serif;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 18px 50px}
+header{background:linear-gradient(135deg,#fff 0%,#fdeef0 55%,#eaf1fc 100%);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+header .logo{font-size:44px;line-height:1}
+header h1{margin:0;font-size:clamp(1.5rem,4vw,2rem);font-weight:800;letter-spacing:-.3px}
+header p{margin:2px 0 0;color:var(--ink2)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0 6px}
+.search{flex:1 1 260px;max-width:420px;font:inherit;padding:10px 14px;border:1px solid #c8d0dc;border-radius:12px;background:#fff}
+.chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font:inherit;font-weight:700;color:var(--ink2);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+h2.subj{display:flex;align-items:center;gap:10px;font-size:1.3rem;margin:26px 0 10px}
+h2.subj .n{font-size:.8rem;background:#fff;border:1px solid var(--line);border-radius:99px;padding:1px 9px;color:var(--ink2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+a.card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-top:5px solid var(--k,var(--acc));border-radius:14px;padding:14px 16px;box-shadow:0 1px 2px #0000000a;transition:transform .15s,box-shadow .15s}
+a.card:hover,a.card:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px #0000001a;outline:none}
+.card .top{display:flex;gap:10px;align-items:center}
+.card .em{font-size:32px;line-height:1}
+.card b{font-size:1.08rem;line-height:1.25}
+.card .lv{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--k,var(--acc))}
+.card p{margin:0;color:var(--ink2);font-size:.93rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .bd{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.card .bd span{font-size:.78rem;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--ink2)}
+.empty{color:var(--ink2);font-style:italic;margin-top:20px}
+footer{margin-top:36px;color:var(--ink2);font-size:.85rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="logo" aria-hidden="true">📚</span>
+    <div><h1>Schede didattiche</h1><p>Scegli una scheda: leggi, ascolta, guarda i disegni e mettiti alla prova con quiz e mappe.</p></div>
+  </header>
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="🔍 Cerca una scheda…" aria-label="Cerca una scheda">
+    <div id="chips" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+  </div>
+  <main id="list"><p class="empty">Carico le schede…</p></main>
+  <footer>Schede preparate con il Laboratorio Schede · funzionano su computer, iPad e telefono</footer>
+</div>
+<script>
+const THEMES = [[/scien|biolog|natur|corpo|chimic|fisic/i,'#C62F3A','🔬'],[/geograf/i,'#1F8A4C','🌍'],[/stori/i,'#B86E00','🏛️'],[/matem|geometr|aritm/i,'#6A4BC4','📐'],[/italian|tedesc|frances|ingles|lingu|letter/i,'#2457A6','💬'],[/music|arte|disegno/i,'#B5408A','🎨']];
+const theme = s => { const t = THEMES.find(x => x[0].test(s || '')); return t ? { c: t[1], e: t[2] } : { c: '#1D7F86', e: '📘' }; };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let ALL = [], subj = '';
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const subjects = [...new Set(ALL.map(d => d.subject))];
+  document.getElementById('chips').innerHTML = subjects.length > 1 ? ['', ...subjects].map(s => `<button class="chip" data-s="${esc(s)}" aria-pressed="${subj === s}">${s ? theme(s).e + ' ' + esc(s) : 'Tutte'}</button>`).join('') : '';
+  const list = ALL.filter(d => (!subj || d.subject === subj) && (!q || (d.title + ' ' + d.subject + ' ' + d.intro).toLowerCase().includes(q)));
+  if (!list.length) { document.getElementById('list').innerHTML = '<p class="empty">Nessuna scheda trovata.</p>'; return; }
+  document.getElementById('list').innerHTML = subjects.filter(s => list.some(d => d.subject === s)).map(s => {
+    const t = theme(s), its = list.filter(d => d.subject === s);
+    return `<h2 class="subj"><span aria-hidden="true">${t.e}</span>${esc(s)}<span class="n">${its.length}</span></h2><div class="grid">${its.map(d => {
+      const x = d.extra || {}, bd = [x.diagrams ? '🔬 disegni' : '', x.maps ? '🧠 mappa' : '', x.quizzes ? '🧩 quiz interattivo' : ''].filter(Boolean);
+      return `<a class="card" href="${esc(d.file)}" style="--k:${t.c}"><div class="top"><span class="em" aria-hidden="true">${esc(d.emoji || t.e)}</span><div>${d.level ? `<div class="lv">${esc(d.level)}</div>` : ''}<b>${esc(d.title)}</b></div></div>${d.intro ? `<p>${esc(d.intro)}</p>` : ''}${bd.length ? `<div class="bd">${bd.map(b => `<span>${b}</span>`).join('')}</div>` : ''}</a>`;
+    }).join('')}</div>`;
+  }).join('');
+}
+document.getElementById('q').addEventListener('input', render);
+document.getElementById('chips').addEventListener('click', e => { const b = e.target.closest('[data-s]'); if (b) { subj = b.dataset.s; render(); } });
+fetch('dashboards.json', { cache: 'no-cache' }).then(r => r.json()).then(d => { ALL = d; render(); })
+  .catch(() => { document.getElementById('list').innerHTML = '<p class="empty">Non riesco a caricare l’elenco delle schede. Riprova più tardi.</p>'; });
+</script>
+</body>
+</html>
